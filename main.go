@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/Jhnvlglmlbrt/monitoring-certs/db"
 	"github.com/Jhnvlglmlbrt/monitoring-certs/handlers"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/favicon"
@@ -17,10 +18,21 @@ func main() {
 		log.Fatal(err)
 	}
 
+	db.Init()
+	// q := db.DB.NewQuery("SELECT id FROM users")
+	// var result fiber.Map
+	// if err := q.One(&result); err != nil {
+	// 	log.Fatal(err)
+	// }
+
 	app.Static("/static", "./static")
 	app.Use(favicon.New(favicon.ConfigDefault))
 	app.Use(handlers.WithAuthenticatedUser)
 	app.Get("/", handlers.HandleGetHome)
+
+	// app.Get("/admin", handlers.HandleGetAdmin)
+
+	app.Get("/dashboard", handlers.HandleGetDashboard)
 
 	log.Fatal(app.Listen(os.Getenv("HTTP_LISTEN_ADDR")))
 }

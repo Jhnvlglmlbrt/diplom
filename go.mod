@@ -8,10 +8,12 @@ require (
 	github.com/flosch/pongo2/v6 v6.0.0 // indirect
 	github.com/gofiber/template v1.8.3 // indirect
 	github.com/gofiber/utils v1.1.0 // indirect
+	github.com/lib/pq v1.10.9 // indirect
 )
 
 require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
+	github.com/go-ozzo/ozzo-dbx v1.5.0
 	github.com/gofiber/template/django/v3 v3.1.10
 	github.com/google/uuid v1.5.0 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect

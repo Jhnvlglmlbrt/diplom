@@ -14,26 +14,40 @@ func HandleGetDashboard(c *fiber.Ctx) error {
 			DomainName: "google.com",
 			Issuer:     "Let's Encrypt!",
 			Expires:    time.Now().AddDate(0, 0, 7),
-			Status:     "Ok",
+			Status:     "healthy",
 		},
 		{
 			ID:         2,
 			DomainName: "amazon.com",
 			Issuer:     "Let's Encrypt!",
 			Expires:    time.Now().AddDate(0, 0, 14),
-			Status:     "Ok",
+			Status:     "expires",
 		},
 		{
 			ID:         3,
 			DomainName: "golangforall.com",
 			Issuer:     "Let's Encrypt!",
 			Expires:    time.Now().AddDate(0, 1, 14),
-			Status:     "Ok",
+			Status:     "expired",
+		},
+		{
+			ID:         4,
+			DomainName: "https://github.com/",
+			Issuer:     "",
+			Expires:    time.Now().AddDate(0, 1, 14),
+			Status:     "invalid",
+		},
+		{
+			ID:         5,
+			DomainName: "https://tailwindflex.com/",
+			Issuer:     "Something!",
+			Expires:    time.Now().AddDate(0, 1, 14),
+			Status:     "offline",
 		},
 	}
 
 	data := fiber.Map{
 		"trackings": sslTrackings,
 	}
-	return c.Render("dashboard/index", data)
+	return c.Render("domains/index", data)
 }

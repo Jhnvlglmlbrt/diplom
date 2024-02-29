@@ -1,7 +1,7 @@
 package data
 
 type User struct {
-	ID    int
+	ID    string
 	Email string
 	// IsAdmin bool
 }

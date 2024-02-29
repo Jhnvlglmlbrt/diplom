@@ -1,0 +1,80 @@
+{% extends "partials/base.html" %}
+
+{% block content %}
+<div class="container mx-auto mt-20 flex gap-10">
+    {% include "partials/sidenav.html" %}
+    {% if !trackings %}
+    <div class="flex w-full justify-center mt-20">
+        <div class="border border-base-300 p-8 rounded-lg text-center prose">
+            <p class="font-semibold">You have currentrly no domains that are being tracked.</p>
+            <p class="font-semibold"><a href="/domains/new">Click here to track domains</a></p>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if trackings %}
+    <div class="flex w-full">
+        <div class="overflow-x-auto w-full">
+            <h1 class="text-3xl font-bold mb-12">My tracked domains</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Domain</th>
+                        <th>Issuer</th>
+                        <th>Expiry date</th>
+                        <th>Days left</th>
+                        <th>Status</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tracking in trackings %}
+                    <tr>
+                        <th>{{ tracking.ID }}</th>
+                        <th>{{ tracking.DomainName }}</th>
+                        <td>{{ tracking.Issuer }}</td>
+                        <td>{{ formatTime(tracking.Expires) }}</td>
+                        <td>{{ daysLeft(tracking.Expires) }}</td>
+                        <td>
+                            {% if tracking.Status == "healthy" %}
+                            <div class = "badge badge-success">
+                                {{ tracking.Status }}
+                            </div>
+                            {% endif %}
+                            {% if tracking.Status == "expired" %}
+                            <div class = "badge badge-info">
+                                {{ tracking.Status }}
+                            </div>
+                            {% endif %}
+                            {% if tracking.Status == "invalid" %}
+                            <div class = "badge badge-error">
+                                {{ tracking.Status }}
+                            </div>
+                            {% endif %}
+                            {% if tracking.Status == "expires" %}
+                            <div class = "badge badge-warning">
+                                {{ tracking.Status }}
+                            </div>
+                            {% endif %}
+                            {% if tracking.Status == "offline" %}
+                            <div class = "badge badge-outline">
+                                {{ tracking.Status }}
+                            </div>
+                            {% endif %}
+                        </td>
+                        {% comment %} <td>{{(badgeForStatus(tracking.Status))}}</td> {% endcomment %}
+                        <td><a class="btn btn-neutral btn-xs" href='/domains/{tracking.ID}'>show</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+                        
+
+
+

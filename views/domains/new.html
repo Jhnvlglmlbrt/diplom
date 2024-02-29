@@ -1,0 +1,27 @@
+{% block content %}
+
+<div class="container mx-auto mt-[calc(4vh)] flex gap-10">
+    {% include "partials/sidenav.html" %}
+    <div class="flex w-full">
+        <div class="prose">
+            <h1 class="text-3xl front-bold">Track new domains</h1>
+            <p>Add a single domain or a comma separated list of all domains you want to track.</p>
+            <form action="/domains" method="post">
+                <div>
+                    <textarea class="textarea textarea-bordered mb-6 w-full"
+                    placeholder="mydomain.com,someotherdomain.com" name = "domains">{{domains}}</textarea>
+                    {% if domains %}
+                    <div class="alert alert-error mb-6">
+                        <span>{{ domains }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary w-fit">Track domains</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

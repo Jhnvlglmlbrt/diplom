@@ -1,55 +1,53 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 
+	"github.com/Jhnvlglmlbrt/monitoring-certs/cmd/app"
 	"github.com/Jhnvlglmlbrt/monitoring-certs/db"
 	"github.com/Jhnvlglmlbrt/monitoring-certs/handlers"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/favicon"
-	"github.com/gofiber/template/django/v3"
 	"github.com/joho/godotenv"
 )
 
 func main() {
-	app, err := initApp()
-	if err != nil {
+	if err := godotenv.Load(); err != nil {
 		log.Fatal(err)
 	}
 
-	db.Init()
-	// q := db.DB.NewQuery("SELECT id FROM users")
-	// var result fiber.Map
-	// if err := q.One(&result); err != nil {
-	// 	log.Fatal(err)
-	// }
+	app := fiber.New(fiber.Config{
+		ErrorHandler:          handlers.ErrorHandler,
+		DisableStartupMessage: true,
+		PassLocalsToViews:     true,
+		Views:                 app.CreateEngine(),
+	})
 
+	db.Init()
+
+	initRoutes(app)
+	listenAddr := os.Getenv("HTTP_LISTEN_ADDR")
+	fmt.Printf("app listening on: http://127.0.0.1:%s\n", listenAddr)
+	log.Fatal(app.Listen(listenAddr))
+	// app.Get("/admin", handlers.HandleGetAdmin)
+
+}
+
+func initRoutes(app *fiber.App) {
 	app.Static("/static", "./static")
 	app.Use(favicon.New(favicon.ConfigDefault))
 	app.Use(handlers.WithAuthenticatedUser)
+	app.Use(handlers.WithViewHelpers)
 	app.Get("/", handlers.HandleGetHome)
+	app.Get("/signin", handlers.HandleGetSignin)
+	app.Get("/signout", handlers.HandleGetSignout)
+	app.Get("/auth/callback/google", handlers.HandleGetCallbackGoogle)
 
-	// app.Get("/admin", handlers.HandleGetAdmin)
+	app.Get("/domains", handlers.HandleGetDashboard)
+	// app.Post("/domains", handlers.WithMustBeAuthenticated, handlers.HandlePostDomain)
+	// app.Post("/domains/new", handlers.WithMustBeAuthenticated, handlers.HandleGetDomainNew)
 
-	app.Get("/dashboard", handlers.HandleGetDashboard)
-
-	log.Fatal(app.Listen(os.Getenv("HTTP_LISTEN_ADDR")))
-}
-
-func initApp() (*fiber.App, error) {
-	if err := godotenv.Load(); err != nil {
-		return nil, err
-	}
-
-	engine := django.New("./views", ".html")
-	engine.Reload(true)
-	app := fiber.New(
-		fiber.Config{
-			Views:                 engine,
-			PassLocalsToViews:     true,
-			DisableStartupMessage: true,
-		})
-
-	return app, nil
+	app.Use(handlers.NotFoundMiddleware)
 }

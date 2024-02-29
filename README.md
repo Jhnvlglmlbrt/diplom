@@ -4,5 +4,5 @@
 ### to rebuild when we do tailwindcss configuration
 
 ```
-npx tailwindcss-cli@latest build ./app.css -o ../static/app.css
+npx tailwindcss-cli@latest build ./assets/app.css -o ../static/app.css
 ```

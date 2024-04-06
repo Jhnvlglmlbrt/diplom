@@ -10,6 +10,10 @@ run: build
 clean: 
 	@rm -rf bin
 
+pull:
+	@go build -o bin/puller cmd/puller/main.go
+	@./bin/puller
+
 
 DB_CONNECTION := $(DATABASE)
 

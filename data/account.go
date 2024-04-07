@@ -9,9 +9,9 @@ import (
 )
 
 const (
-	PlanFree     = "FREE"
-	PlanStarter  = "STARTER"
-	PlanBusiness = "BUSINESS"
+	PlanFree     = "STARTER"
+	PlanStarter  = "BUSINESS"
+	PlanBusiness = "CORPORATIVE"
 )
 
 type Account struct {

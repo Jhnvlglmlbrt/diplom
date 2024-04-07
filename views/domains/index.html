@@ -31,12 +31,15 @@
                 <tbody>
                     {% for tracking in trackings %}
                     <tr>
-                        <th>{{ tracking.ID }}</th>
+                        <th>
+                            <input type="checkbox" class="checkbox checkbox-xs" />
+                        </th>
+                        {% comment %} <th>{{ tracking.ID }}</th> {% endcomment %}
                         <th>{{ tracking.DomainName }}</th>
                         <td>{{ tracking.Issuer }}</td>
                         <td>{{ formatTime(tracking.Expires) }}</td>
                         <td>{{ daysLeft(tracking.Expires) }}</td>
-                        <td>
+                        {% comment %} <td>
                             {% if tracking.Status == "healthy" %}
                             <div class = "badge badge-success">
                                 {{ tracking.Status }}
@@ -62,8 +65,8 @@
                                 {{ tracking.Status }}
                             </div>
                             {% endif %}
-                        </td>
-                        {% comment %} <td>{{(badgeForStatus(tracking.Status))}}</td> {% endcomment %}
+                        </td> {% endcomment %}
+                        <td>{{(badgeForStatus(tracking.Status))}}</td>
                         <td><a class="btn btn-neutral btn-xs" href='/domains/{tracking.ID}'>show</a></td>
                     </tr>
                     {% endfor %}

@@ -8,3 +8,7 @@ import (
 func InitSessionMiddleware() *session.Store {
 	return session.New()
 }
+
+func InitSessionMiddleware5() *session.Store {
+	return session.New()
+}

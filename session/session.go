@@ -9,6 +9,6 @@ func InitSessionMiddleware() *session.Store {
 	return session.New()
 }
 
-func InitSessionMiddleware1() *session.Store {
+func InitSessionMiddleware3() *session.Store {
 	return session.New()
 }

@@ -4,19 +4,18 @@
 <div class="container mx-auto mt-20">
 	<div class="flex justify-center items-center flex-col">
 		<div class="w-full md:w-96 rounded-lg p-8 shadow-lg">
-			<h1 class="text-4xl font-bold text-center mb-10">Sign up</h1>
+			<h1 class="text-4xl font-bold text-center mb-10">Регистрация</h1>
 			<form action="/signup" method="POST">
 				<div class="form-control">
 					<div class="mb-4">
 						<input class="input input-bordered input-default w-full" placeholder="email" type="email"
-							name="email" value="{{ flash.email}}" />
+							name="email"/>
 					</div>
 					{% if flash.emailError %}
 					<p class="text-error text-sm mb-4">{{ flash.emailError }}</p>
 					{% endif %}
 					<div class="mb-4">
-						<input class="input input-bordered input-default w-full" placeholder="full name" name="fullname"
-							value="{{ flash.fullname }}" />
+						<input class="input input-bordered input-default w-full" placeholder="имя" name="fullname" />
 					</div>
 					{% if flash.fullnameError %}
 					<p class="text-error text-sm mb-4">{{ flash.fullnameError }}</p>
@@ -36,12 +35,12 @@
 					</div>
 					{% endif %}
 					<button type="submit" class="btn btn-primary w-full">Sign up</button>
-					<hr class="my-6 text-gray-500">
+					{% comment %} <hr class="my-6 text-gray-500"> {% endcomment %}
 				</div>
 			</form>
-			{% include "partials/google-signin.html" %}
+			{% comment %} {% include "partials/google-signin.html" %} {% endcomment %}
 		</div>
-		<a href="/signin" class="my-10 underline text-info">Already have an account? Sign in here.</a>
+		<a href="/signin" class="my-10 underline text-primary">Уже есть аккаунт? Войди здесь.</a>
 	</div>
 </div>
 {% endblock %}

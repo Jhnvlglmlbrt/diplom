@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to my website</title>
+    <meta name="description" content="CertPulse tracks all your SSL certificates and notifies your before they expire.">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+	<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+
+	{{ css("app.css") }}
+
+	{% block script %}
+	{% endblock %}
+</head>
+
+<body class="min-h-screen">
+	{% include "partials/app_navigation.html" %}
+
+	<div class="container mx-auto mt-20 flex gap-10">
+
+		{% include "partials/sidenav.html" %}
+		<div class="w-full flex justify-center">
+			<div class="w-full xl:px-0 xl:w-11/12">
+				
+				{% block pageContent %}
+				{% endblock %}
+				
+			</div>
+		</div>
+	</div>
+
+</body>

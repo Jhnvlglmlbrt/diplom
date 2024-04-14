@@ -34,39 +34,12 @@
                         <th>
                             <input type="checkbox" class="checkbox checkbox-xs" />
                         </th>
-                        {% comment %} <th>{{ tracking.ID }}</th> {% endcomment %}
+                        <th>{{ tracking.ID }}</th>
                         <th>{{ tracking.DomainName }}</th>
                         <td>{{ tracking.Issuer }}</td>
                         <td>{{ formatTime(tracking.Expires) }}</td>
                         <td>{{ daysLeft(tracking.Expires) }}</td>
-                        {% comment %} <td>
-                            {% if tracking.Status == "healthy" %}
-                            <div class = "badge badge-success">
-                                {{ tracking.Status }}
-                            </div>
-                            {% endif %}
-                            {% if tracking.Status == "expired" %}
-                            <div class = "badge badge-info">
-                                {{ tracking.Status }}
-                            </div>
-                            {% endif %}
-                            {% if tracking.Status == "invalid" %}
-                            <div class = "badge badge-error">
-                                {{ tracking.Status }}
-                            </div>
-                            {% endif %}
-                            {% if tracking.Status == "expires" %}
-                            <div class = "badge badge-warning">
-                                {{ tracking.Status }}
-                            </div>
-                            {% endif %}
-                            {% if tracking.Status == "offline" %}
-                            <div class = "badge badge-outline">
-                                {{ tracking.Status }}
-                            </div>
-                            {% endif %}
-                        </td> {% endcomment %}
-                        <td>{{(badgeForStatus(tracking.Status))}}</td>
+                        <td>{{badgeForStatus(tracking.Status)}}</td>
                         <td><a class="btn btn-neutral btn-xs" href='/domains/{tracking.ID}'>show</a></td>
                     </tr>
                     {% endfor %}

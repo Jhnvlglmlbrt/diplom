@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/gofiber/fiber/v2"
 	_ "github.com/lib/pq"
 	"github.com/uptrace/bun"
 	"github.com/uptrace/bun/dialect/pgdialect"
@@ -25,4 +26,11 @@ func Init() {
 		Bun.AddQueryHook(bundebug.NewQueryHook(bundebug.WithVerbose(true)))
 	}
 
+}
+
+func WhereMap(qb bun.QueryBuilder, m fiber.Map) bun.QueryBuilder {
+	for k, v := range m {
+		qb = qb.Where(fmt.Sprintf("%s = ?", k), v)
+	}
+	return qb
 }

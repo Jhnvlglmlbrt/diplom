@@ -99,7 +99,6 @@ func HandleGetSignin(c *fiber.Ctx) error {
 }
 
 func HandleSigninWithEmail(c *fiber.Ctx) error {
-
 	var credentials supabase.UserCredentials
 
 	if err := c.BodyParser(&credentials); err != nil {

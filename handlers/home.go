@@ -5,7 +5,8 @@ import (
 )
 
 func HandleGetHome(c *fiber.Ctx) error {
-	accessToken := c.Query("access_token")
+	accessToken := c.Cookies("accessToken")
+	// logger.Log("accessToken", accessToken)
 	if len(accessToken) > 0 {
 		return c.Redirect("/auth/callback/" + accessToken)
 	}

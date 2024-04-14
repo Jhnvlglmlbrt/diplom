@@ -55,3 +55,13 @@
     --tw-text-opacity: 1;
     color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity)));
 }
+
+/* .loader{
+	display:none;
+}
+.htmx-request .loader{
+	display:inline;
+}
+.htmx-request.loader {
+	display:inline;
+} */

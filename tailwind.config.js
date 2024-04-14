@@ -13,7 +13,7 @@ module.exports = {
                    
           "secondary": "#93c5fd",
                    
-          "accent": "#2563eb",
+          "accent": "#d1d5db",
                    
           "neutral": "#1f2937",
                    
@@ -30,5 +30,5 @@ module.exports = {
       }
     ],
   },
-  plugins: [require("daisyui")],
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
 }

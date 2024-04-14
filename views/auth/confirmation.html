@@ -1,0 +1,31 @@
+{% extends "partials/base.html" %}
+
+{% block content %}
+<div class="container mx-auto mt-20">
+    <div class="w-full text-center">
+        <div class="text-lg mb-4">
+            <p>Благодарим за регистрацию на нашем сайте! Ссылка для подтверждения регистрации была отправлена на вашу почту {{ email }} </p>
+            <p>Если вы не получили email - подождите пока вы сможете отправить подтверждение снова.</p>
+        </div>
+        <div class="mt-5">
+            <button type="button" hx-get="/confirmation" class="btn btn-secondary btn-sm" id="but" disabled>Отправить</button>
+        </div>
+    </div>
+</div>
+<script>
+    function isResendButtonEnabled() {    
+        const now = new Date().getTime();
+        const pageLoadTime = {{ pageLoadTime }};
+        return now - pageLoadTime >=  62000;
+    }
+
+    function updateButtonState() {
+        const resendButton = document.getElementById("but");
+        if (isResendButtonEnabled()) {
+            resendButton.removeAttribute("disabled"); 
+        }
+    }
+
+    setInterval(updateButtonState, 1000);
+</script>
+{% endblock %}

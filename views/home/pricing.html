@@ -23,7 +23,7 @@
 						<li><span class="text-green-500 font-bold text-xl">&check;</span> Certificate details</li>
 					</ul>
 					<div class="card-actions justify-center">
-						<a href="/signup" class="btn btn-primary">Начни бесплатно</a>
+						<a href="/signup?p=starter" class="btn btn-primary">Выбрать план</a>
 					</div>
 				</div>
 			</div>
@@ -42,10 +42,7 @@
 						<li><span class="text-green-500 font-bold text-xl">&check;</span> Notify 3 email addresses</li>
 					</ul>
 					<div class="card-actions justify-center">
-						<form method="POST" action="/stripe/checkout">
-							<input type="hidden" name="priceID" value="{{ planBusinessPID }}" />
-							<button class="btn btn-primary">Выбрать план</button>
-						</form>
+						<a href="/signup?p=business" class="btn btn-primary">Выбрать план</a>
 					</div>
 				</div>
 			</div>
@@ -64,10 +61,7 @@
 						<li><span class="text-green-500 font-bold text-xl">&check;</span> Notify 10 email addresses</li>
 					</ul>
 					<div class="card-actions justify-center">
-						<form method="POST" action="/stripe/checkout">
-							<input type="hidden" name="priceID" value="{{ planEnterprisePID }}" />
-							<button class="btn btn-primary">Выбрать план</button>
-						</form>
+						<a href="/signup?p=enterprise" class="btn btn-primary">Выбрать план</a>
 					</div>
 				</div>
 			</div>

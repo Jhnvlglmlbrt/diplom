@@ -28,6 +28,10 @@ func ErrorHandler(c *fiber.Ctx, err error) error {
 	}
 	if util.IsErrNoRecords(err) {
 		return render404(c)
+	} else if util.IsErrNoEmailFound(err) {
+		return render401(c)
+	} else if util.IsErrEmailRateExceeded(err) {
+		return render429(c)
 	}
 	return render500(c)
 }
@@ -38,4 +42,12 @@ func render404(c *fiber.Ctx) error {
 
 func render500(c *fiber.Ctx) error {
 	return c.Status(500).Render("errors/500", fiber.Map{})
+}
+
+func render401(c *fiber.Ctx) error {
+	return c.Status(401).Render("errors/401", fiber.Map{})
+}
+
+func render429(c *fiber.Ctx) error {
+	return c.Status(429).Render("errors/429", fiber.Map{})
 }

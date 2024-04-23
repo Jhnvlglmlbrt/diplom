@@ -1,1 +1,719 @@
 ts=2024-04-10T10:39:27.5651304Z caller=auth.go:131 info="user signin" userID=cb31df0f-a6b0-437d-ac7a-35a7c16d4086 accountID=1
+ts=2024-04-10T13:03:33.6852989Z caller=middleware.go:41 error="authentication error" err="probably invalid access token"
+ts=2024-04-10T13:03:39.8797052Z caller=auth.go:131 info="user signin" userID=cb31df0f-a6b0-437d-ac7a-35a7c16d4086 accountID=1
+ts=2024-04-10T14:13:58.1026816Z caller=middleware.go:41 error="authentication error" err="probably invalid access token"
+ts=2024-04-10T14:15:16.8971879Z caller=auth.go:48 msg="user signup with email" id=31a8cdaf-f491-4ce0-af99-96da03d46416
+ts=2024-04-10T14:15:46.0308228Z caller=error.go:25 error="Cannot GET /resend-email-confirmation"
+ts=2024-04-10T14:18:44.1273817Z caller=auth.go:48 msg="user signup with email" id=31a8cdaf-f491-4ce0-af99-96da03d46416
+ts=2024-04-10T14:27:41.0676271Z caller=account.go:85 event="new account signup" id=4
+ts=2024-04-10T14:27:41.0853865Z caller=auth.go:131 info="user signin" userID=31a8cdaf-f491-4ce0-af99-96da03d46416 accountID=4
+ts=2024-04-10T14:27:45.475681Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-10T14:45:30.950618Z caller=auth.go:48 msg="user signup with email" id=5976be75-af5c-4922-b6ee-ba6375716827
+ts=2024-04-10T14:45:43.3452876Z caller=account.go:85 event="new account signup" id=5
+ts=2024-04-10T14:45:43.3628738Z caller=auth.go:131 info="user signin" userID=5976be75-af5c-4922-b6ee-ba6375716827 accountID=5
+ts=2024-04-10T14:48:31.9569608Z caller=middleware.go:41 error="authentication error" err="probably invalid access token"
+ts=2024-04-10T14:48:44.7486016Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-10T14:52:45.5993612Z caller=auth.go:133 info="user signin" userID=cb31df0f-a6b0-437d-ac7a-35a7c16d4086 accountID=1
+ts=2024-04-10T14:52:45.599844Z caller=auth.go:136 selectedPlan=
+ts=2024-04-10T14:53:36.3397496Z caller=auth.go:68 selectedPlan=
+ts=2024-04-10T14:53:41.8562198Z caller=auth.go:133 info="user signin" userID=cb31df0f-a6b0-437d-ac7a-35a7c16d4086 accountID=1
+ts=2024-04-10T14:53:41.8562198Z caller=auth.go:136 selectedPlan=
+ts=2024-04-10T14:54:22.9862059Z caller=auth.go:72 selectedPlan=
+ts=2024-04-10T14:54:24.3844218Z caller=auth.go:133 info="user signin" userID=cb31df0f-a6b0-437d-ac7a-35a7c16d4086 accountID=1
+ts=2024-04-10T14:54:24.3844218Z caller=auth.go:136 selectedPlan=
+ts=2024-04-10T14:55:19.1472732Z caller=auth.go:72 selectedPlan=business
+ts=2024-04-10T14:55:19.9814077Z caller=auth.go:133 info="user signin" userID=cb31df0f-a6b0-437d-ac7a-35a7c16d4086 accountID=1
+ts=2024-04-10T14:56:35.8147819Z caller=auth.go:68 selectedPlan=
+ts=2024-04-10T14:56:44.1211758Z caller=auth.go:133 info="user signin" userID=cb31df0f-a6b0-437d-ac7a-35a7c16d4086 accountID=1
+ts=2024-04-10T14:58:23.5563142Z caller=auth.go:111 selectedPlan=
+ts=2024-04-10T14:58:24.1626134Z caller=auth.go:133 info="user signin" userID=cb31df0f-a6b0-437d-ac7a-35a7c16d4086 accountID=1
+ts=2024-04-10T15:11:36.397823Z caller=auth.go:79 selectedPlan=business
+ts=2024-04-10T15:11:37.4623958Z caller=auth.go:157 info="user signin" userID=cb31df0f-a6b0-437d-ac7a-35a7c16d4086 accountID=1
+ts=2024-04-10T15:11:37.4623958Z caller=auth.go:167 selectedPlan=business
+ts=2024-04-10T15:31:14.39862Z caller=auth.go:34 selectedPlan=business
+ts=2024-04-10T15:31:14.4045535Z caller=auth.go:44 selectedPlan=business
+ts=2024-04-10T15:31:24.2857498Z caller=auth.go:34 selectedPlan=
+ts=2024-04-10T15:31:24.2857498Z caller=auth.go:44 selectedPlan=
+ts=2024-04-10T15:31:25.8722878Z caller=auth.go:65 msg="user signup with email" id=39e88117-7c5f-4428-a795-5b69b1ef7a30
+ts=2024-04-10T15:31:32.210418Z caller=account.go:85 event="new account signup" id=6
+ts=2024-04-10T15:31:32.210418Z caller=auth.go:148 info="user signin" userID=39e88117-7c5f-4428-a795-5b69b1ef7a30 accountID=6 fullname=(MISSING)
+ts=2024-04-10T15:31:32.210418Z caller=auth.go:157 selectedPlan=null
+ts=2024-04-10T15:37:09.3033615Z caller=auth.go:35 selectedPlan=business
+ts=2024-04-10T15:37:09.3127043Z caller=auth.go:54 selectedPlan=business
+ts=2024-04-10T15:37:18.1673849Z caller=auth.go:35 selectedPlan=
+ts=2024-04-10T15:37:18.1680226Z caller=auth.go:54 selectedPlan=
+ts=2024-04-10T15:37:20.099992Z caller=auth.go:74 msg="user signup with email" id=5bdfd0cd-1cbd-4ec0-ad5d-e449df737641
+ts=2024-04-10T15:37:30.1599847Z caller=account.go:85 event="new account signup" id=7
+ts=2024-04-10T15:37:30.1599847Z caller=auth.go:157 info="user signin" userID=5bdfd0cd-1cbd-4ec0-ad5d-e449df737641 accountID=7
+ts=2024-04-10T15:37:30.1605015Z caller=auth.go:166 selectedPlan=
+ts=2024-04-10T16:32:22.9996438Z caller=auth.go:77 selectedPlan=
+ts=2024-04-10T16:32:23.973661Z caller=auth.go:155 info="user signin" userID=cb31df0f-a6b0-437d-ac7a-35a7c16d4086 accountID=1
+ts=2024-04-10T16:32:23.973661Z caller=auth.go:165 selectedPlan=
+ts=2024-04-10T16:33:17.5390044Z caller=auth.go:77 selectedPlan=enterprise
+ts=2024-04-10T16:33:22.967334Z caller=auth.go:77 selectedPlan=enterprise
+ts=2024-04-10T16:33:23.8799764Z caller=auth.go:155 info="user signin" userID=cb31df0f-a6b0-437d-ac7a-35a7c16d4086 accountID=1
+ts=2024-04-10T16:33:23.8804721Z caller=auth.go:165 selectedPlan=enterprise
+ts=2024-04-10T16:39:02.0199612Z caller=auth.go:78 selectedPlan=enterprise
+ts=2024-04-10T16:39:02.9081872Z caller=auth.go:156 info="user signin" userID=cb31df0f-a6b0-437d-ac7a-35a7c16d4086 accountID=1
+ts=2024-04-10T16:39:02.9084333Z caller=auth.go:166 selectedPlan=enterprise
+ts=2024-04-10T16:39:56.0155527Z caller=auth.go:53 msg="user signup with email" id=bba5dd7f-a362-4bd1-8934-9d5d5c2074c0
+ts=2024-04-10T16:40:30.9746702Z caller=account.go:85 event="new account signup" id=8
+ts=2024-04-10T16:40:30.975922Z caller=auth.go:156 info="user signin" userID=bba5dd7f-a362-4bd1-8934-9d5d5c2074c0 accountID=8
+ts=2024-04-10T16:40:30.975922Z caller=auth.go:166 selectedPlan=enterprise
+ts=2024-04-10T16:41:04.0534919Z caller=auth.go:53 msg="user signup with email" id=d6c9e3c5-900b-41e4-b516-951359e6de54
+ts=2024-04-10T16:41:25.525404Z caller=account.go:85 event="new account signup" id=9
+ts=2024-04-10T16:41:25.5262387Z caller=auth.go:156 info="user signin" userID=d6c9e3c5-900b-41e4-b516-951359e6de54 accountID=9
+ts=2024-04-10T16:41:25.5262387Z caller=auth.go:166 selectedPlan=enterprise
+ts=2024-04-10T18:33:54.018345Z caller=middleware.go:41 error="authentication error" err="probably invalid access token"
+ts=2024-04-10T18:34:11.4203089Z caller=auth.go:54 msg="user signup with email" id=48c746b9-0b18-49a9-956b-e4f4d366ba97
+ts=2024-04-10T18:36:57.5850353Z caller=account.go:85 event="new account signup" id=10
+ts=2024-04-10T18:36:57.5850353Z caller=auth.go:157 info="user signin" userID=48c746b9-0b18-49a9-956b-e4f4d366ba97 accountID=10
+ts=2024-04-10T18:36:57.5860215Z caller=auth.go:167 selectedPlan=null
+ts=2024-04-10T18:49:40.4536645Z caller=auth.go:36 selectedPlan=business
+ts=2024-04-10T18:50:06.2923334Z caller=auth.go:36 selectedPlan=business
+ts=2024-04-10T18:51:24.3529725Z caller=auth.go:36 selectedPlan=business
+ts=2024-04-10T18:51:29.7032908Z caller=auth.go:36 selectedPlan=business
+ts=2024-04-10T18:52:33.6956465Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T18:52:35.5791427Z caller=auth.go:36 selectedPlan=enterprise
+ts=2024-04-10T18:52:40.705057Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T18:54:02.1935262Z caller=auth.go:36 selectedPlan=enterprise
+ts=2024-04-10T18:54:07.9415759Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T18:54:22.9698666Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T18:54:30.1309361Z caller=auth.go:36 selectedPlan=enterprise
+ts=2024-04-10T18:54:32.688197Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T18:55:17.3011886Z caller=auth.go:36 selectedPlan=business
+ts=2024-04-10T18:55:20.3208976Z caller=auth.go:36 selectedPlan=enterprise
+ts=2024-04-10T18:55:23.9142028Z caller=auth.go:36 selectedPlan=business
+ts=2024-04-10T18:58:57.0334524Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T18:58:58.9945205Z caller=auth.go:73 msg="user signup with email" id=400cf546-34ef-4b24-bb74-43a99522c6ed
+ts=2024-04-10T18:59:19.4895157Z caller=account.go:85 event="new account signup" id=11
+ts=2024-04-10T18:59:19.4999796Z caller=auth.go:176 info="user signin" userID=400cf546-34ef-4b24-bb74-43a99522c6ed accountID=11
+ts=2024-04-10T18:59:19.5111405Z caller=auth.go:186 selectedPlan=
+ts=2024-04-10T18:59:30.7539868Z caller=auth.go:36 selectedPlan=business
+ts=2024-04-10T18:59:33.7250413Z caller=auth.go:36 selectedPlan=enterprise
+ts=2024-04-10T18:59:34.2236831Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T18:59:39.2250689Z caller=auth.go:36 selectedPlan=enterprise
+ts=2024-04-10T18:59:46.7630931Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T19:00:11.4077565Z caller=auth.go:36 selectedPlan=business
+ts=2024-04-10T19:00:12.9284919Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T19:00:14.869347Z caller=auth.go:36 selectedPlan=enterprise
+ts=2024-04-10T19:00:16.0099135Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T19:05:21.4815211Z caller=auth.go:36 selectedPlan=business
+ts=2024-04-10T19:05:28.9956357Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T19:05:32.8242511Z caller=auth.go:36 selectedPlan=enterprise
+ts=2024-04-10T19:05:33.7497171Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T19:07:04.913984Z caller=auth.go:98 selectedPlan=enterprise
+ts=2024-04-10T19:07:16.6734155Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T19:10:22.3309908Z caller=error.go:25 error="failed to render: [Error (where: parser) in <string> | Line 46 Col 58 near '.'] Expected either a number, string, keyword or identifier."
+ts=2024-04-10T19:10:39.6510914Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T19:10:41.278442Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T19:10:53.3557069Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T19:10:54.8036091Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T19:11:20.9867567Z caller=auth.go:36 selectedPlan=business
+ts=2024-04-10T19:11:34.8712122Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T19:16:41.942776Z caller=auth.go:36 selectedPlan=business
+ts=2024-04-10T19:16:44.3381214Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T19:17:17.809321Z caller=auth.go:36 selectedPlan=business
+ts=2024-04-10T19:17:22.5891033Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T19:17:46.7248883Z caller=auth.go:36 selectedPlan=business
+ts=2024-04-10T19:17:47.8407778Z caller=auth.go:36 selectedPlan=
+ts=2024-04-10T19:19:20.6616597Z caller=auth.go:72 msg="user signup with email" id=853cf5f5-2b32-4bf0-80b7-da95664c2280
+ts=2024-04-10T19:19:33.5079804Z caller=account.go:85 event="new account signup" id=12
+ts=2024-04-10T19:19:33.5079804Z caller=auth.go:175 info="user signin" userID=853cf5f5-2b32-4bf0-80b7-da95664c2280 accountID=12
+ts=2024-04-10T19:19:33.5079804Z caller=auth.go:188 selectedPlan=
+ts=2024-04-10T19:25:22.0965517Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-10T19:27:33.5329938Z caller=auth.go:177 info="user signin" userID=cb31df0f-a6b0-437d-ac7a-35a7c16d4086 accountID=1
+ts=2024-04-10T19:27:33.5334272Z caller=auth.go:180 selectedPlanfromcookie=enterprise
+ts=2024-04-10T19:53:42.3277817Z caller=auth.go:60 msg="user signup with email" id=a75c4c42-b005-4ab9-a3eb-49f734aa87c1
+ts=2024-04-10T19:53:56.2928419Z caller=account.go:85 event="new account signup" id=13
+ts=2024-04-10T19:53:56.2928419Z caller=auth.go:133 info="user signin" userID=a75c4c42-b005-4ab9-a3eb-49f734aa87c1 accountID=13
+ts=2024-04-10T19:53:56.2928419Z caller=auth.go:136 selectedPlanfromcookie=
+ts=2024-04-10T19:55:59.4821872Z caller=auth.go:60 msg="user signup with email" id=1cd84bb6-e6ae-4575-9df0-7f3e6f8003e7
+ts=2024-04-10T19:57:00.6328653Z caller=account.go:85 event="new account signup" id=14
+ts=2024-04-10T19:57:00.6328653Z caller=auth.go:133 info="user signin" userID=1cd84bb6-e6ae-4575-9df0-7f3e6f8003e7 accountID=14
+ts=2024-04-10T19:57:00.6328653Z caller=auth.go:136 selectedPlanfromcookie=
+ts=2024-04-10T19:57:05.1637269Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-10T19:58:56.1672851Z caller=auth.go:99 selectedPlanfromcookieHANDLESIGNINWITHEMAIL=business
+ts=2024-04-10T19:58:56.3787581Z caller=auth.go:136 info="user signin" userID=cb31df0f-a6b0-437d-ac7a-35a7c16d4086 accountID=1
+ts=2024-04-10T19:58:56.3787581Z caller=auth.go:139 selectedPlanfromcookie=business
+ts=2024-04-10T19:59:30.3712507Z caller=auth.go:99 selectedPlanfromcookieHANDLESIGNINWITHEMAIL=business
+ts=2024-04-10T19:59:30.5925707Z caller=auth.go:136 info="user signin" userID=cb31df0f-a6b0-437d-ac7a-35a7c16d4086 accountID=1
+ts=2024-04-10T19:59:30.5925707Z caller=auth.go:139 selectedPlanfromcookie=business
+ts=2024-04-10T20:00:52.467984Z caller=auth.go:99 selectedPlanfromcookieHANDLESIGNINWITHEMAIL=business
+ts=2024-04-10T20:00:52.6734679Z caller=auth.go:136 info="user signin" userID=cb31df0f-a6b0-437d-ac7a-35a7c16d4086 accountID=1
+ts=2024-04-10T20:00:52.6734679Z caller=auth.go:139 selectedPlanfromcookie=business
+ts=2024-04-10T20:34:13.4764374Z caller=auth.go:58 msg="user signup with email" id=923587d2-e55e-4f40-a759-baf8b610dfe8
+ts=2024-04-10T20:34:47.1304566Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-10T20:35:43.2838604Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-10T20:49:58.7605207Z caller=auth.go:37 selectedPlan=business
+ts=2024-04-10T20:49:58.7605207Z caller=auth.go:52 selectedPlan=business
+ts=2024-04-10T20:50:29.2270231Z caller=auth.go:51 selectedPlan=business
+ts=2024-04-10T20:50:30.5371113Z caller=auth.go:51 selectedPlan=
+ts=2024-04-10T20:50:38.3705159Z caller=auth.go:51 selectedPlan=
+ts=2024-04-10T20:50:39.1178302Z caller=auth.go:51 selectedPlan=
+ts=2024-04-10T20:50:39.5729493Z caller=auth.go:51 selectedPlan=
+ts=2024-04-10T20:50:39.8577746Z caller=auth.go:51 selectedPlan=
+ts=2024-04-10T20:50:40.281723Z caller=auth.go:51 selectedPlan=
+ts=2024-04-10T20:50:40.9602551Z caller=auth.go:51 selectedPlan=
+ts=2024-04-10T20:50:41.5159236Z caller=auth.go:51 selectedPlan=
+ts=2024-04-10T20:50:42.3992066Z caller=auth.go:51 selectedPlan=
+ts=2024-04-10T20:50:42.9317721Z caller=auth.go:51 selectedPlan=
+ts=2024-04-10T20:50:43.4495268Z caller=auth.go:51 selectedPlan=
+ts=2024-04-10T20:50:43.9831958Z caller=auth.go:51 selectedPlan=
+ts=2024-04-10T20:50:44.4483132Z caller=auth.go:51 selectedPlan=
+ts=2024-04-10T20:50:44.8951778Z caller=auth.go:51 selectedPlan=
+ts=2024-04-10T21:45:42.7378808Z caller=error.go:25 error="ERROR: relation \"plants\" does not exist (SQLSTATE=42P01)"
+ts=2024-04-10T21:46:33.4091576Z caller=error.go:25 error="ERROR: relation \"plants\" does not exist (SQLSTATE=42P01)"
+ts=2024-04-10T21:46:38.5088974Z caller=error.go:25 error="ERROR: relation \"plants\" does not exist (SQLSTATE=42P01)"
+ts=2024-04-10T21:49:50.9566775Z caller=error.go:25 error="ERROR: relation \"plants\" does not exist (SQLSTATE=42P01)"
+ts=2024-04-10T21:51:16.9616481Z caller=auth.go:39 msg=business
+ts=2024-04-10T21:58:27.0154485Z caller=auth.go:39 msg=business
+ts=2024-04-10T21:58:44.0507373Z caller=error.go:25 error="ERROR: relation \"plants\" does not exist (SQLSTATE=42P01)"
+ts=2024-04-10T22:04:45.6972919Z caller=error.go:25 error="ERROR: relation \"plans\" does not exist (SQLSTATE=42P01)"
+ts=2024-04-10T22:05:16.1555202Z caller=error.go:25 error="ERROR: relation \"plans\" does not exist (SQLSTATE=42P01)"
+ts=2024-04-10T22:07:40.3134281Z caller=account.go:104 event="new plan created" id=1
+ts=2024-04-10T22:07:40.3136417Z caller=auth.go:39 plan=business
+ts=2024-04-10T22:08:10.0915004Z caller=account.go:104 event="new plan created" id=2
+ts=2024-04-10T22:08:10.0915327Z caller=auth.go:39 plan=business
+ts=2024-04-10T22:08:15.5840944Z caller=account.go:104 event="new plan created" id=3
+ts=2024-04-10T22:08:15.5840944Z caller=auth.go:39 plan=enterprise
+ts=2024-04-10T22:12:05.722707Z caller=account.go:103 event="new plan created" id=4
+ts=2024-04-10T22:12:05.722707Z caller=auth.go:39 plan=business
+ts=2024-04-10T22:12:47.2054474Z caller=account.go:103 event="new plan created" id=5
+ts=2024-04-10T22:12:47.2114323Z caller=auth.go:39 plan=
+ts=2024-04-10T22:13:07.7271308Z caller=account.go:103 event="new plan created" id=6
+ts=2024-04-10T22:13:07.7271308Z caller=auth.go:39 plan=enterprise
+ts=2024-04-10T22:14:49.8937537Z caller=account.go:103 event="new plan created" id=7
+ts=2024-04-10T22:14:49.8937537Z caller=auth.go:39 plan=enterprise
+ts=2024-04-10T22:16:12.9741886Z caller=account.go:103 event="new plan created" id=8
+ts=2024-04-10T22:16:12.9741886Z caller=auth.go:39 plan=
+ts=2024-04-10T22:16:20.0547985Z caller=account.go:103 event="new plan created" id=9
+ts=2024-04-10T22:16:20.0557199Z caller=auth.go:39 plan=
+ts=2024-04-10T22:16:20.6723269Z caller=account.go:103 event="new plan created" id=10
+ts=2024-04-10T22:16:20.6723269Z caller=auth.go:39 plan=
+ts=2024-04-10T22:16:29.529987Z caller=account.go:103 event="new plan created" id=11
+ts=2024-04-10T22:16:29.5310309Z caller=auth.go:39 plan=
+ts=2024-04-10T22:16:45.432293Z caller=account.go:103 event="new plan created" id=12
+ts=2024-04-10T22:16:45.432293Z caller=auth.go:39 plan=
+ts=2024-04-10T22:18:36.2604138Z caller=error.go:25 error="failed to render: [Error (where: parser) in <string> | Line 9 Col 56 near '.'] Expected either a number, string, keyword or identifier."
+ts=2024-04-10T22:18:55.2169085Z caller=account.go:103 event="new plan created" id=13
+ts=2024-04-10T22:18:55.2177155Z caller=auth.go:41 plan=
+ts=2024-04-10T22:22:34.9985063Z caller=auth.go:28 plan=business
+ts=2024-04-10T22:26:57.4730722Z caller=account.go:103 event="new plan created" id=14
+ts=2024-04-10T22:26:57.4734591Z caller=auth.go:34 plan=
+ts=2024-04-10T22:27:21.0412321Z caller=account.go:103 event="new plan created" id=15
+ts=2024-04-10T22:27:21.0412321Z caller=auth.go:34 plan=business
+ts=2024-04-10T22:27:23.8394468Z caller=account.go:103 event="new plan created" id=16
+ts=2024-04-10T22:27:23.8398015Z caller=auth.go:34 plan=enterprise
+ts=2024-04-10T22:34:05.8952883Z caller=account.go:103 event="new plan created" id=1
+ts=2024-04-10T22:34:05.8952883Z caller=auth.go:34 plan=enterprise
+ts=2024-04-10T22:34:12.8161616Z caller=account.go:103 event="new plan created" id=2
+ts=2024-04-10T22:34:12.8161616Z caller=auth.go:34 plan=starter
+ts=2024-04-10T22:34:15.3984489Z caller=account.go:103 event="new plan created" id=3
+ts=2024-04-10T22:34:15.3984489Z caller=auth.go:34 plan=business
+ts=2024-04-10T22:34:19.3618545Z caller=account.go:103 event="new plan created" id=4
+ts=2024-04-10T22:34:19.3619037Z caller=auth.go:34 plan=enterprise
+ts=2024-04-10T22:38:35.2205229Z caller=account.go:103 event="new plan created" id=5
+ts=2024-04-10T22:38:35.2205229Z caller=auth.go:34 plan=starter
+ts=2024-04-10T22:51:47.6096418Z caller=account.go:103 event="new plan created" id=1
+ts=2024-04-10T22:51:47.6099808Z caller=auth.go:34 plan=starter
+ts=2024-04-10T22:51:51.9472137Z caller=account.go:103 event="new plan created" id=2
+ts=2024-04-10T22:51:51.9481988Z caller=auth.go:34 plan=business
+ts=2024-04-10T22:51:53.1815904Z caller=account.go:103 event="new plan created" id=3
+ts=2024-04-10T22:51:53.1819148Z caller=auth.go:34 plan=enterprise
+ts=2024-04-10T23:05:38.5431977Z caller=error.go:25 error="sql: no rows in result set"
+ts=2024-04-10T23:06:09.1008531Z caller=error.go:25 error="sql: no rows in result set"
+ts=2024-04-10T23:06:11.8699455Z caller=error.go:25 error="sql: no rows in result set"
+ts=2024-04-10T23:07:14.8855662Z caller=account.go:112 error="error finding plan" err="sql: no rows in result set"
+ts=2024-04-10T23:07:14.9433562Z caller=account.go:131 event="new plan created" id=1
+ts=2024-04-10T23:07:14.9433562Z caller=auth.go:34 plan=starter
+ts=2024-04-10T23:07:20.8025015Z caller=account.go:112 error="error finding plan" err="sql: no rows in result set"
+ts=2024-04-10T23:07:20.8585201Z caller=account.go:131 event="new plan created" id=2
+ts=2024-04-10T23:07:20.8585201Z caller=auth.go:34 plan=business
+ts=2024-04-10T23:07:23.6478616Z caller=account.go:112 error="error finding plan" err="sql: no rows in result set"
+ts=2024-04-10T23:07:23.7037614Z caller=account.go:131 event="new plan created" id=3
+ts=2024-04-10T23:07:23.704157Z caller=auth.go:34 plan=enterprise
+ts=2024-04-10T23:07:26.0101733Z caller=account.go:117 event="plan already exists" id=1
+ts=2024-04-10T23:07:26.010918Z caller=auth.go:34 plan=starter
+ts=2024-04-10T23:07:47.5993286Z caller=auth.go:68 msg="user signup with email" id=637a0b78-dcbc-4803-b9e2-83d5297aad97
+ts=2024-04-10T23:07:55.890967Z caller=error.go:25 error="ERROR: column \"plan\" of relation \"accounts\" does not exist (SQLSTATE=42703)"
+ts=2024-04-10T23:13:00.1710299Z caller=error.go:25 error="ERROR: column account.plan does not exist (SQLSTATE=42703)"
+ts=2024-04-10T23:14:52.0504717Z caller=error.go:25 error="sql: no rows in result set"
+ts=2024-04-10T23:15:03.9059199Z caller=error.go:25 error="sql: no rows in result set"
+ts=2024-04-10T23:15:37.8747543Z caller=middleware.go:41 error="authentication error" err="probably invalid access token"
+ts=2024-04-10T23:15:41.1335944Z caller=account.go:116 event="plan already exists" id=1
+ts=2024-04-10T23:15:41.1337865Z caller=auth.go:34 plan=starter
+ts=2024-04-10T23:15:53.0917158Z caller=auth.go:68 msg="user signup with email" id=be3943ee-c0c7-4143-b11c-52065de785ea
+ts=2024-04-10T23:16:01.2507957Z caller=error.go:25 error="ERROR: insert or update on table \"accounts\" violates foreign key constraint \"accounts_plan_id_fkey\" (SQLSTATE=23503)"
+ts=2024-04-10T23:19:28.0767721Z caller=error.go:25 error="ERROR: insert or update on table \"accounts\" violates foreign key constraint \"accounts_plan_id_fkey\" (SQLSTATE=23503)"
+ts=2024-04-10T23:21:37.892062Z caller=error.go:25 error="ERROR: insert or update on table \"accounts\" violates foreign key constraint \"accounts_plan_id_fkey\" (SQLSTATE=23503)"
+ts=2024-04-10T23:21:48.3804807Z caller=error.go:25 error="sql: no rows in result set"
+ts=2024-04-10T23:22:55.9918914Z caller=error.go:25 error="sql: no rows in result set"
+ts=2024-04-11T08:35:07.1639582Z caller=account.go:116 event="plan already exists" id=2
+ts=2024-04-11T08:35:07.2501922Z caller=auth.go:34 plan=business
+ts=2024-04-11T08:35:19.3131979Z caller=auth.go:68 msg="user signup with email" id=1b0ccea8-7270-4b07-bbde-a509c490a63c
+ts=2024-04-11T08:35:25.9034287Z caller=error.go:25 error="ERROR: insert or update on table \"accounts\" violates foreign key constraint \"accounts_plan_id_fkey\" (SQLSTATE=23503)"
+ts=2024-04-11T08:39:05.1856392Z caller=middleware.go:41 error="authentication error" err="probably invalid access token"
+ts=2024-04-11T08:39:06.769591Z caller=account.go:111 error="error finding plan" err="sql: no rows in result set"
+ts=2024-04-11T08:39:06.8300484Z caller=account.go:130 event="new plan created" id=4
+ts=2024-04-11T08:39:06.8309807Z caller=auth.go:34 plan=business
+ts=2024-04-11T08:39:18.6863502Z caller=auth.go:68 msg="user signup with email" id=ab24737f-3030-4117-a0df-b31779437732
+ts=2024-04-11T09:08:03.4466033Z caller=auth.go:39 plan=business
+ts=2024-04-11T09:08:11.9919488Z caller=auth.go:39 plan=
+ts=2024-04-11T09:08:22.8515156Z caller=auth.go:39 plan=
+ts=2024-04-11T09:08:31.5227527Z caller=auth.go:39 plan=
+ts=2024-04-11T09:09:30.1927621Z caller=auth.go:41 plan=business
+ts=2024-04-11T09:09:39.9191856Z caller=auth.go:41 plan=
+ts=2024-04-11T09:09:42.6203939Z caller=auth.go:41 plan=
+ts=2024-04-11T09:09:45.1139769Z caller=auth.go:41 plan=enterprise
+ts=2024-04-11T09:09:46.5691605Z caller=auth.go:41 plan=
+ts=2024-04-11T09:13:32.7840052Z caller=auth.go:41 plan=business
+ts=2024-04-11T09:13:34.1023022Z caller=auth.go:41 plan=
+ts=2024-04-11T09:14:06.7466557Z caller=auth.go:41 plan=
+ts=2024-04-11T09:15:20.9988362Z caller=auth.go:41 plan=business
+ts=2024-04-11T09:15:26.8109612Z caller=auth.go:41 plan=
+ts=2024-04-11T09:15:45.6376191Z caller=auth.go:41 plan=
+ts=2024-04-11T09:15:55.295307Z caller=auth.go:41 plan=business
+ts=2024-04-11T09:16:13.2176279Z caller=auth.go:75 msg="user signup with email" id=54562c8d-5823-4436-8919-f9edefbb4f44
+ts=2024-04-11T09:16:37.6351507Z caller=error.go:25 error="ERROR: insert or update on table \"accounts\" violates foreign key constraint \"accounts_plan_id_fkey\" (SQLSTATE=23503)"
+ts=2024-04-11T09:18:35.0735464Z caller=middleware.go:41 error="authentication error" err="probably invalid access token"
+ts=2024-04-11T09:18:41.8049639Z caller=auth.go:41 plan=business
+ts=2024-04-11T09:21:45.2625038Z caller=auth.go:41 plan=business
+ts=2024-04-11T09:21:57.2689807Z caller=auth.go:41 plan=
+ts=2024-04-11T09:22:06.4388133Z caller=auth.go:41 plan=business
+ts=2024-04-11T09:22:27.1076807Z caller=auth.go:41 plan=
+ts=2024-04-11T09:22:51.7092824Z caller=auth.go:41 plan=business
+ts=2024-04-11T09:22:58.3626191Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-11T09:27:37.2308959Z caller=auth.go:41 plan=starter
+ts=2024-04-11T09:27:42.7637839Z caller=auth.go:58 selectedPlan=starter
+ts=2024-04-11T09:27:42.7749201Z caller=auth.go:41 plan=
+ts=2024-04-11T09:34:09.3271887Z caller=auth.go:41 plan=business
+ts=2024-04-11T09:34:15.4239306Z caller=auth.go:58 selectedPlan=business
+ts=2024-04-11T09:34:15.621508Z caller=auth.go:41 plan=
+ts=2024-04-11T09:34:17.9542154Z caller=auth.go:58 selectedPlan=
+ts=2024-04-11T09:34:17.9615063Z caller=auth.go:41 plan=
+ts=2024-04-11T09:37:04.9912098Z caller=auth.go:41 plan=business
+ts=2024-04-11T09:37:06.2740666Z caller=auth.go:58 selectedPlan=business
+ts=2024-04-11T09:37:06.2811381Z caller=auth.go:41 plan=
+ts=2024-04-11T09:37:09.0885841Z caller=auth.go:41 plan=
+ts=2024-04-11T09:37:11.6771849Z caller=auth.go:41 plan=enterprise
+ts=2024-04-11T09:37:13.5035704Z caller=auth.go:58 selectedPlan=enterprise
+ts=2024-04-11T09:37:13.5134882Z caller=auth.go:41 plan=
+ts=2024-04-11T09:38:33.1107826Z caller=auth.go:41 plan=business
+ts=2024-04-11T09:38:34.4442202Z caller=auth.go:58 selectedPlan=business
+ts=2024-04-11T09:38:34.4531493Z caller=auth.go:41 plan=
+ts=2024-04-11T09:38:38.1768401Z caller=auth.go:41 plan=enterprise
+ts=2024-04-11T09:38:39.2781513Z caller=auth.go:58 selectedPlan=enterprise
+ts=2024-04-11T09:38:39.2860416Z caller=auth.go:41 plan=
+ts=2024-04-11T09:41:44.5776976Z caller=auth.go:41 plan=business
+ts=2024-04-11T09:41:54.9148044Z caller=auth.go:58 selectedPlan=business
+ts=2024-04-11T09:41:54.9226966Z caller=auth.go:41 plan=business
+ts=2024-04-11T09:42:16.5014763Z caller=auth.go:41 plan=business
+ts=2024-04-11T09:42:30.0967564Z caller=auth.go:58 selectedPlan=business
+ts=2024-04-11T09:42:32.1761774Z caller=auth.go:78 msg="user signup with email" id=7ad56557-479c-479b-ac15-e37df471c4ac
+ts=2024-04-11T09:42:48.1394283Z caller=account.go:89 event="new account signup" id=1
+ts=2024-04-11T09:42:48.1394283Z caller=auth.go:151 info="user signin" userID=7ad56557-479c-479b-ac15-e37df471c4ac accountID=1
+ts=2024-04-11T09:42:48.1394283Z caller=auth.go:154 selectedPlan=
+ts=2024-04-11T09:43:14.4480913Z caller=auth.go:58 selectedPlan=business
+ts=2024-04-11T09:43:14.5691479Z caller=auth.go:78 msg="user signup with email" id=160cbea0-8388-49b9-a6c5-6d330cbec8c3
+ts=2024-04-11T09:45:09.2309392Z caller=auth.go:41 plan=business
+ts=2024-04-11T09:45:10.6205419Z caller=auth.go:58 selectedPlan=business
+ts=2024-04-11T09:45:10.6274364Z caller=auth.go:41 plan=business
+ts=2024-04-11T09:45:20.8048846Z caller=auth.go:58 selectedPlan=business
+ts=2024-04-11T09:45:21.0619155Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-11T10:11:40.3368655Z caller=auth.go:41 plan=business
+ts=2024-04-11T10:12:06.8606054Z caller=auth.go:58 selectedPlan=business
+ts=2024-04-11T10:12:07.6821655Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-11T10:38:01.7135276Z caller=auth.go:41 plan=business
+ts=2024-04-11T10:38:08.4706378Z caller=auth.go:58 selectedPlan=business
+ts=2024-04-11T10:38:10.6949061Z caller=auth.go:78 msg="user signup with email" id=6341eaf0-24cb-4d8f-a7e3-4977c3381033
+ts=2024-04-11T10:38:27.3780866Z caller=account.go:89 event="new account signup" id=2
+ts=2024-04-11T10:38:27.3941867Z caller=auth.go:151 info="user signin" userID=6341eaf0-24cb-4d8f-a7e3-4977c3381033 accountID=2
+ts=2024-04-11T10:38:27.4017773Z caller=auth.go:154 SELECTEDPLAN!!!=business
+ts=2024-04-11T11:19:41.6250872Z caller=auth.go:41 plan=enterprise
+ts=2024-04-11T11:19:48.266874Z caller=auth.go:58 selectedPlan=enterprise
+ts=2024-04-11T11:19:50.1746436Z caller=auth.go:78 msg="user signup with email" id=830673de-4465-4806-b23b-50b54625a0aa
+ts=2024-04-11T11:20:00.3712825Z caller=error.go:25 error="unknown plan: enterprise"
+ts=2024-04-11T12:18:12.5958431Z caller=middleware.go:41 error="authentication error" err="probably invalid access token"
+ts=2024-04-11T12:18:14.6355377Z caller=auth.go:41 plan=business
+ts=2024-04-11T12:18:34.4543319Z caller=auth.go:58 selectedPlan=business
+ts=2024-04-11T12:18:36.3351278Z caller=auth.go:78 msg="user signup with email" id=812c9076-dfa9-428c-963d-5793f7478c91
+ts=2024-04-11T12:18:49.8991351Z caller=account.go:110 event="new account signup" id=3
+ts=2024-04-11T12:18:49.9001706Z caller=auth.go:154 info="user signin" userID=812c9076-dfa9-428c-963d-5793f7478c91 accountID=3 selectedPlan=business
+ts=2024-04-11T13:59:15.8489705Z caller=middleware.go:41 error="authentication error" err="probably invalid access token"
+ts=2024-04-11T14:21:07.1147163Z caller=auth.go:35 plan=enterprise
+ts=2024-04-11T14:21:24.4924927Z caller=auth.go:42 selectedPlan=enterprise
+ts=2024-04-11T14:21:27.8730923Z caller=auth.go:62 msg="user signup with email" id=44677c58-6c0d-4799-bf40-51f2bc05acf2
+ts=2024-04-11T14:21:37.4847266Z caller=account.go:111 event="new account signup" id=4
+ts=2024-04-11T14:21:37.4857237Z caller=auth.go:139 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4 selectedPlan=enterprise
+ts=2024-04-11T21:38:00.1783995Z caller=middleware.go:41 error="authentication error" err="probably invalid access token"
+ts=2024-04-11T21:38:46.468234Z caller=auth.go:139 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4 selectedPlan=enterprise
+ts=2024-04-11T21:39:10.1677526Z caller=auth.go:35 plan=starter
+ts=2024-04-11T21:39:54.6371749Z caller=auth.go:42 selectedPlan=starter
+ts=2024-04-11T21:39:54.6594473Z caller=auth.go:35 plan=
+ts=2024-04-11T21:40:44.0846954Z caller=auth.go:35 plan=business
+ts=2024-04-11T21:40:45.9274869Z caller=auth.go:42 selectedPlan=business
+ts=2024-04-11T21:40:45.935664Z caller=auth.go:35 plan=business
+ts=2024-04-11T21:40:56.3523697Z caller=auth.go:35 plan=business
+ts=2024-04-11T21:41:03.4047563Z caller=auth.go:35 plan=business
+ts=2024-04-11T21:41:04.7746248Z caller=auth.go:42 selectedPlan=business
+ts=2024-04-11T21:41:04.7828394Z caller=auth.go:35 plan=business
+ts=2024-04-11T21:41:40.087782Z caller=auth.go:35 plan=starter
+ts=2024-04-11T21:41:41.4671961Z caller=auth.go:42 selectedPlan=starter
+ts=2024-04-11T21:41:41.4767666Z caller=auth.go:35 plan=starter
+ts=2024-04-11T21:41:44.7776608Z caller=auth.go:35 plan=starter
+ts=2024-04-11T21:41:49.0776402Z caller=auth.go:35 plan=starter
+ts=2024-04-11T21:41:52.9083369Z caller=auth.go:42 selectedPlan=starter
+ts=2024-04-11T21:41:52.9170223Z caller=auth.go:35 plan=starter
+ts=2024-04-11T21:41:57.9858512Z caller=auth.go:35 plan=business
+ts=2024-04-11T21:41:59.2861878Z caller=auth.go:42 selectedPlan=business
+ts=2024-04-11T21:41:59.2927253Z caller=auth.go:35 plan=business
+ts=2024-04-11T21:42:01.2711448Z caller=auth.go:35 plan=enterprise
+ts=2024-04-11T21:42:02.1675537Z caller=auth.go:42 selectedPlan=enterprise
+ts=2024-04-11T21:42:02.1741954Z caller=auth.go:35 plan=enterprise
+ts=2024-04-11T21:42:03.6586967Z caller=auth.go:42 selectedPlan=enterprise
+ts=2024-04-11T21:42:03.6673648Z caller=auth.go:35 plan=enterprise
+ts=2024-04-11T21:43:49.1356708Z caller=auth.go:39 plan=
+ts=2024-04-11T21:44:11.9940674Z caller=auth.go:39 plan=
+ts=2024-04-11T21:44:18.0420145Z caller=auth.go:39 plan=
+ts=2024-04-11T21:44:40.1383255Z caller=auth.go:35 plan=
+ts=2024-04-11T21:44:44.6244377Z caller=auth.go:35 plan=starter
+ts=2024-04-11T21:44:45.8017998Z caller=auth.go:42 selectedPlan=starter
+ts=2024-04-11T21:44:45.8102739Z caller=auth.go:35 plan=
+ts=2024-04-11T21:44:51.0932834Z caller=auth.go:35 plan=business
+ts=2024-04-11T21:44:53.1977998Z caller=auth.go:42 selectedPlan=business
+ts=2024-04-11T21:44:53.2056595Z caller=auth.go:35 plan=
+ts=2024-04-11T21:45:52.2829521Z caller=auth.go:35 plan=business
+ts=2024-04-11T21:45:53.4286448Z caller=auth.go:42 selectedPlan=business
+ts=2024-04-11T21:45:53.4365973Z caller=auth.go:35 plan=business
+ts=2024-04-11T22:07:55.0271996Z caller=account.go:111 event="new account signup" id=5
+ts=2024-04-11T22:07:55.0894471Z caller=auth.go:138 info="user signin" userID=18551f09-2129-4f88-80cf-4ff6b2185a1f accountID=5 selectedPlan=business
+ts=2024-04-12T19:03:04.3010441Z caller=auth.go:138 info="user signin" userID=18551f09-2129-4f88-80cf-4ff6b2185a1f accountID=5 selectedPlan=business
+ts=2024-04-12T19:03:20.5893044Z caller=auth.go:138 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4 selectedPlan=business
+ts=2024-04-12T19:03:44.7687704Z caller=auth.go:138 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4 selectedPlan=business
+ts=2024-04-12T19:04:29.4817183Z caller=error.go:25 error="Cannot GET /domains/%7Btracking.ID%7D"
+ts=2024-04-12T19:05:34.5596784Z caller=error.go:25 error="Cannot GET /dmains"
+ts=2024-04-12T20:23:15.5776406Z caller=error.go:25 error="Cannot GET /static/app.css"
+ts=2024-04-12T20:23:18.2679271Z caller=error.go:25 error="Cannot GET /static/app.css"
+ts=2024-04-12T20:23:36.7625343Z caller=error.go:25 error="Cannot GET /static/app.css"
+ts=2024-04-12T21:21:32.0937462Z caller=error.go:25 error="Cannot GET /domains/%7Btracking.ID%7D"
+ts=2024-04-12T21:21:32.1924544Z caller=error.go:25 error="Cannot GET /domains/%7Btracking.ID%7D"
+ts=2024-04-12T21:21:33.073587Z caller=error.go:25 error="Cannot GET /domains/%7Btracking.ID%7D"
+ts=2024-04-12T21:39:01.3225296Z caller=auth.go:138 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-12T22:20:19.0389278Z caller=auth.go:91
+ts=2024-04-12T22:20:20.3800461Z caller=auth.go:140 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-12T22:21:29.7795556Z caller=auth.go:139 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-12T22:48:13.112269Z caller=auth.go:30 Plan=starter
+ts=2024-04-12T22:48:19.7358838Z caller=auth.go:30 Plan=starter
+ts=2024-04-12T22:48:21.7542579Z caller=auth.go:30 Plan=starter
+ts=2024-04-12T22:49:07.5380117Z caller=auth.go:30 Plan=starter
+ts=2024-04-12T22:49:10.8722346Z caller=auth.go:30 Plan=starter
+ts=2024-04-12T22:49:29.2170359Z caller=auth.go:30 Plan=business
+ts=2024-04-12T22:49:31.029906Z caller=auth.go:30 Plan=enterprise
+ts=2024-04-12T22:49:32.0412322Z caller=auth.go:30 Plan=
+ts=2024-04-12T22:49:40.7245691Z caller=auth.go:30 Plan=
+ts=2024-04-12T22:49:42.5985535Z caller=auth.go:30 Plan=
+ts=2024-04-12T22:49:44.3704237Z caller=auth.go:30 Plan=business
+ts=2024-04-12T22:49:45.2283546Z caller=auth.go:30 Plan=business
+ts=2024-04-12T22:49:47.0876348Z caller=auth.go:30 Plan=business
+ts=2024-04-12T22:49:49.2038019Z caller=auth.go:30 Plan=business
+ts=2024-04-12T22:49:50.2611177Z caller=auth.go:30 Plan=business
+ts=2024-04-12T22:49:52.4198961Z caller=auth.go:30 Plan=business
+ts=2024-04-12T22:50:39.1175711Z caller=auth.go:30 Plan=
+ts=2024-04-12T22:50:41.0320597Z caller=auth.go:30 Plan=
+ts=2024-04-12T22:59:41.2733068Z caller=auth.go:43 plan=starter
+ts=2024-04-12T23:00:09.4233577Z caller=auth.go:29 plan=
+ts=2024-04-12T23:00:11.0786433Z caller=auth.go:29 plan=starter
+ts=2024-04-12T23:00:21.7082701Z caller=auth.go:29 plan=
+ts=2024-04-12T23:00:25.8685596Z caller=auth.go:29 plan=starter
+ts=2024-04-12T23:00:28.7254514Z caller=auth.go:29 plan=
+ts=2024-04-12T23:00:40.4793104Z caller=auth.go:29 plan=
+ts=2024-04-12T23:00:42.0202139Z caller=auth.go:29 plan=starter
+ts=2024-04-12T23:00:48.069931Z caller=auth.go:29 plan=starter
+ts=2024-04-12T23:00:53.9066811Z caller=auth.go:29 plan=
+ts=2024-04-12T23:01:16.2824689Z caller=auth.go:29 plan111=starter
+ts=2024-04-12T23:01:18.524039Z caller=auth.go:29 plan111=
+ts=2024-04-12T23:01:20.8462625Z caller=auth.go:29 plan111=
+ts=2024-04-12T23:01:21.1026416Z caller=auth.go:29 plan111=
+ts=2024-04-12T23:01:21.4248864Z caller=auth.go:29 plan111=
+ts=2024-04-12T23:01:52.3231324Z caller=auth.go:29 plan111=starter
+ts=2024-04-12T23:01:54.5021075Z caller=auth.go:29 plan111=
+ts=2024-04-12T23:02:01.7841716Z caller=auth.go:29 plan111=
+ts=2024-04-12T23:15:09.944224Z caller=auth.go:62 msg="user signup with email" id=f6beb103-1348-4de3-8ff8-a13ac50688bf
+ts=2024-04-12T23:18:22.801183Z caller=auth.go:62 msg="user signup with email" id=f6beb103-1348-4de3-8ff8-a13ac50688bf
+ts=2024-04-12T23:21:48.1982465Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-12T23:21:59.4218889Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-13T21:18:09.5511637Z caller=auth.go:62 msg="user signup with email" id=ada34ca6-b5d6-4cb8-94f2-74506c2104f4
+ts=2024-04-13T21:18:31.7212163Z caller=error.go:25 error="Cannot GET /resend-email-confirmation"
+ts=2024-04-13T21:19:39.4128063Z caller=auth.go:62 msg="user signup with email" id=cd3a3495-65d3-44dc-ab9d-3330320b3d43
+ts=2024-04-13T21:36:05.8461165Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-13T21:56:07.8173063Z caller=auth.go:77 msg="user signup with email" id=16eec10f-41d6-431e-b416-678d6825d7fc
+ts=2024-04-13T21:56:13.3925565Z caller=auth.go:175 yarikdolgopol@yandex.ru=(MISSING)
+ts=2024-04-13T21:57:12.2596188Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-13T22:13:44.7430066Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-13T22:28:06.2039249Z caller=auth.go:77 msg="user signup with email" id=c3b9d0fe-5175-4ce5-b102-3b0f0a1fca2d
+ts=2024-04-13T22:28:15.1336425Z caller=auth.go:181 email=yarikdolgopol@yandex.ru
+ts=2024-04-13T22:28:15.3669451Z caller=error.go:25 error="User not allowed"
+ts=2024-04-13T22:29:16.6080013Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-13T22:29:30.8289401Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-13T22:34:46.947704Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-13T22:45:32.2427003Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-13T22:57:39.0397107Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-13T22:57:51.6086357Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-13T23:03:50.7000698Z caller=auth.go:77 msg="user signup with email" id=27d6110d-af18-412a-9edf-6aff9737beec
+ts=2024-04-13T23:03:53.4717287Z caller=auth.go:181 email=yarikdolgopol@yandex.ru
+ts=2024-04-13T23:03:53.6929758Z caller=error.go:25 error="error sending email"
+ts=2024-04-13T23:05:41.8946001Z caller=auth.go:181 email=yarikdolgopol@yandex.ru
+ts=2024-04-13T23:05:42.3597502Z caller=error.go:25 error="error sending email"
+ts=2024-04-13T23:06:16.4646155Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-13T23:29:33.3893686Z caller=error.go:25 error="unknown plan: "
+ts=2024-04-13T23:31:45.5271301Z caller=middleware.go:41 error="authentication error" err="probably invalid access token"
+ts=2024-04-13T23:34:25.6665529Z caller=auth.go:77 msg="user signup with email" id=a384fd13-ded3-4b14-b226-c6094b74bc0c
+ts=2024-04-13T23:37:50.3859148Z caller=auth.go:181 email=yarikdolgopol@yandex.ru
+ts=2024-04-13T23:37:50.7290536Z caller=error.go:25 error="User not allowed"
+ts=2024-04-13T23:38:08.5937005Z caller=error.go:25 error="unknown plan: "
+ts=2024-04-13T23:41:44.075883Z caller=auth.go:77 msg="user signup with email" id=e871c5d5-61ea-4953-94bf-c0bf7137c9db
+ts=2024-04-13T23:41:58.531297Z caller=auth.go:181 email=yarikdolgopol@yandex.ru
+ts=2024-04-13T23:43:13.9240583Z caller=error.go:25 error="unknown plan: "
+ts=2024-04-14T00:05:55.5467754Z caller=error.go:25 error="failed to encode data: gob: type not registered for interface: handlers.SignupParams"
+ts=2024-04-14T00:12:12.0252937Z caller=auth.go:78 msg="user signup with email" id=819fb266-8e72-4051-8145-d2edc53db1c7
+ts=2024-04-14T00:13:05.0914209Z caller=error.go:25 error="For security purposes, you can only request this after 5 seconds."
+ts=2024-04-14T00:13:16.0916985Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T00:15:04.8832331Z caller=auth.go:78 msg="user signup with email" id=db6ce17e-2d5e-4d21-b37b-4924a973313e
+ts=2024-04-14T00:16:31.3106395Z caller=auth.go:206 msg="user signup with email" id=db6ce17e-2d5e-4d21-b37b-4924a973313e
+ts=2024-04-14T00:16:40.8442755Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T00:16:52.5219388Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T00:27:59.302259Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T00:32:04.5945269Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T00:49:36.9723772Z caller=auth.go:78 msg="user signup with email" id=cc671dab-7ffc-4273-b9a5-0780250006ea
+ts=2024-04-14T00:49:45.1889638Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T00:49:50.7502687Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T00:51:24.9704739Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T00:51:42.743488Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T00:52:35.4073929Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T00:52:46.2411101Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T00:52:56.6442909Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4 accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6Ik1ZZGZ3b1JVbGxKUmhnUXAiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzEzMDU5NTc1LCJpYXQiOjE3MTMwNTU5NzUsImlzcyI6Imh0dHBzOi8veG10Z2F5bGdwY2pzZHptbnhpb3Auc3VwYWJhc2UuY28vYXV0aC92MSIsInN1YiI6IjQ0Njc3YzU4LTZjMGQtNDc5OS1iZjQwLTUxZjJiYzA1YWNmMiIsImVtYWlsIjoidXNlci5tYWlsMGVuY3J5cHRAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJlbWFpbCI6InVzZXIubWFpbDBlbmNyeXB0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJzdWIiOiI0NDY3N2M1OC02YzBkLTQ3OTktYmY0MC01MWYyYmMwNWFjZjIifSwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJhYWwiOiJhYWwxIiwiYW1yIjpbeyJtZXRob2QiOiJwYXNzd29yZCIsInRpbWVzdGFtcCI6MTcxMzA1NTk3NX1dLCJzZXNzaW9uX2lkIjoiZjcyYTY4NWMtNTdkNy00NTM4LWJlNDgtZGRiNzAyM2E0MzU2IiwiaXNfYW5vbnltb3VzIjpmYWxzZX0.SxX7uphfXKVls5QXvOjJFxM0ZxlR_nONnGiS1Ug1OoU
+ts=2024-04-14T11:28:22.387686Z caller=middleware.go:41 error="authentication error" err="probably invalid access token"
+ts=2024-04-14T11:30:21.4597651Z caller=auth.go:78 msg="user signup with email" id=8454d1b1-1c66-45e9-a777-9ed1e27f6de4
+ts=2024-04-14T11:30:50.2358464Z caller=error.go:25 error="For security purposes, you can only request this after 29 seconds."
+ts=2024-04-14T11:31:37.5472856Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T11:31:51.4110782Z caller=error.go:25 error="unknown plan: "
+ts=2024-04-14T11:35:36.3809003Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T11:35:47.9143939Z caller=error.go:25 error="sql: no rows in result set"
+ts=2024-04-14T16:18:23.160206Z caller=auth.go:81 msg="user signup with email" id=b415613e-83c1-49be-b9d5-a34f8f620c3f
+ts=2024-04-14T16:20:44.030324Z caller=auth.go:81 msg="user signup with email" id=b415613e-83c1-49be-b9d5-a34f8f620c3f
+ts=2024-04-14T16:23:12.1167089Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T16:23:22.7998574Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T16:31:06.3964235Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T16:35:22.1410135Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T16:36:38.1644764Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T16:43:53.6510849Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T16:51:25.1903648Z caller=auth.go:79 msg="user signup with email" id=d8b907fa-8c6a-4557-956b-790204d93f42 loadTime=1713113485190
+ts=2024-04-14T16:56:48.7109492Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T17:00:32.7940464Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T17:19:56.2198306Z caller=auth.go:79 msg="user signup with email" id=212a93d8-8a11-4cb6-9d66-6c414bde76ed loadTime=1713115196219
+ts=2024-04-14T17:20:41.9405953Z caller=error.go:25 error="For security purposes, you can only request this after 12 seconds."
+ts=2024-04-14T17:21:03.9478939Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T17:22:21.2884906Z caller=auth.go:121 loadTime=1713115341007609000
+ts=2024-04-14T17:22:22.3153444Z caller=auth.go:161 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-14T17:28:13.6329822Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T17:42:37.4772453Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T17:49:24.8746407Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T17:56:02.9631987Z caller=auth.go:80 msg="user signup with email" id=d767dddc-fffe-4c8f-9820-10d34b6bb367
+ts=2024-04-14T18:00:20.6828119Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T18:15:31.9547928Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T18:24:16.9096719Z caller=auth.go:79 msg="user signup with email" id=f5bc063f-4060-4651-a2fe-d98814e1981b
+ts=2024-04-14T18:24:33.1399131Z caller=error.go:25 error="For security purposes, you can only request this after 42 seconds."
+ts=2024-04-14T18:25:21.677097Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T18:45:12.1012317Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T18:55:59.3208675Z caller=auth.go:79 msg="user signup with email" id=51d6774f-57ec-47bc-ad92-ec196dd00238
+ts=2024-04-14T19:01:52.7569968Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T19:17:34.0900584Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T19:23:21.5791466Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T19:26:32.4058211Z caller=auth.go:79 msg="user signup with email" id=b79f48b3-10d0-4f5b-aa39-c8af44b7ba06
+ts=2024-04-14T19:30:40.3096456Z caller=auth.go:79 msg="user signup with email" id=b79f48b3-10d0-4f5b-aa39-c8af44b7ba06
+ts=2024-04-14T19:31:04.530871Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T20:04:14.6743183Z caller=error.go:25 error="Cannot GET /signin1"
+ts=2024-04-14T20:06:11.3191032Z caller=error.go:25 error="Cannot GET /date"
+ts=2024-04-14T20:06:13.1244387Z caller=error.go:25 error="Cannot GET /date"
+ts=2024-04-14T20:06:31.7994342Z caller=error.go:25 error="Cannot GET /signup/1"
+ts=2024-04-14T20:15:13.7152553Z caller=home.go:10 accessToken= accessToken=(MISSING)
+ts=2024-04-14T20:15:21.3888282Z caller=auth.go:157 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-14T20:15:59.5565968Z caller=home.go:10 accessToken=
+ts=2024-04-14T20:16:45.6723046Z caller=auth.go:157 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-14T20:17:13.4921346Z caller=home.go:10 accessToken=
+ts=2024-04-14T20:17:30.7952371Z caller=auth.go:157 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-14T20:18:59.5835751Z caller=error.go:25 error="Cannot GET /"
+ts=2024-04-14T20:20:09.2050565Z caller=home.go:10 accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6Ik1ZZGZ3b1JVbGxKUmhnUXAiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzEzMTI5NDUwLCJpYXQiOjE3MTMxMjU4NTAsImlzcyI6Imh0dHBzOi8veG10Z2F5bGdwY2pzZHptbnhpb3Auc3VwYWJhc2UuY28vYXV0aC92MSIsInN1YiI6IjQ0Njc3YzU4LTZjMGQtNDc5OS1iZjQwLTUxZjJiYzA1YWNmMiIsImVtYWlsIjoidXNlci5tYWlsMGVuY3J5cHRAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJlbWFpbCI6InVzZXIubWFpbDBlbmNyeXB0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJzdWIiOiI0NDY3N2M1OC02YzBkLTQ3OTktYmY0MC01MWYyYmMwNWFjZjIifSwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJhYWwiOiJhYWwxIiwiYW1yIjpbeyJtZXRob2QiOiJwYXNzd29yZCIsInRpbWVzdGFtcCI6MTcxMzEyNTg1MH1dLCJzZXNzaW9uX2lkIjoiMTNhMWZmMTQtMWIwZC00NzNmLTlkM2ItMzFlNGMyM2I4MzdmIiwiaXNfYW5vbnltb3VzIjpmYWxzZX0.94Q5ZHY3SutX3bbp9AvJ9xdzCz0SRzWLELfTkOfL1eU
+ts=2024-04-14T20:20:10.064278Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-14T20:20:24.3178532Z caller=home.go:10 accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6Ik1ZZGZ3b1JVbGxKUmhnUXAiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzEzMTI5NDUwLCJpYXQiOjE3MTMxMjU4NTAsImlzcyI6Imh0dHBzOi8veG10Z2F5bGdwY2pzZHptbnhpb3Auc3VwYWJhc2UuY28vYXV0aC92MSIsInN1YiI6IjQ0Njc3YzU4LTZjMGQtNDc5OS1iZjQwLTUxZjJiYzA1YWNmMiIsImVtYWlsIjoidXNlci5tYWlsMGVuY3J5cHRAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJlbWFpbCI6InVzZXIubWFpbDBlbmNyeXB0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJzdWIiOiI0NDY3N2M1OC02YzBkLTQ3OTktYmY0MC01MWYyYmMwNWFjZjIifSwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJhYWwiOiJhYWwxIiwiYW1yIjpbeyJtZXRob2QiOiJwYXNzd29yZCIsInRpbWVzdGFtcCI6MTcxMzEyNTg1MH1dLCJzZXNzaW9uX2lkIjoiMTNhMWZmMTQtMWIwZC00NzNmLTlkM2ItMzFlNGMyM2I4MzdmIiwiaXNfYW5vbnltb3VzIjpmYWxzZX0.94Q5ZHY3SutX3bbp9AvJ9xdzCz0SRzWLELfTkOfL1eU
+ts=2024-04-14T20:20:24.6316077Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-14T20:20:34.8322488Z caller=home.go:10 accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6Ik1ZZGZ3b1JVbGxKUmhnUXAiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzEzMTI5NDUwLCJpYXQiOjE3MTMxMjU4NTAsImlzcyI6Imh0dHBzOi8veG10Z2F5bGdwY2pzZHptbnhpb3Auc3VwYWJhc2UuY28vYXV0aC92MSIsInN1YiI6IjQ0Njc3YzU4LTZjMGQtNDc5OS1iZjQwLTUxZjJiYzA1YWNmMiIsImVtYWlsIjoidXNlci5tYWlsMGVuY3J5cHRAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJlbWFpbCI6InVzZXIubWFpbDBlbmNyeXB0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJzdWIiOiI0NDY3N2M1OC02YzBkLTQ3OTktYmY0MC01MWYyYmMwNWFjZjIifSwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJhYWwiOiJhYWwxIiwiYW1yIjpbeyJtZXRob2QiOiJwYXNzd29yZCIsInRpbWVzdGFtcCI6MTcxMzEyNTg1MH1dLCJzZXNzaW9uX2lkIjoiMTNhMWZmMTQtMWIwZC00NzNmLTlkM2ItMzFlNGMyM2I4MzdmIiwiaXNfYW5vbnltb3VzIjpmYWxzZX0.94Q5ZHY3SutX3bbp9AvJ9xdzCz0SRzWLELfTkOfL1eU
+ts=2024-04-14T20:20:35.2157642Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-14T20:20:35.2984168Z caller=home.go:10 accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6Ik1ZZGZ3b1JVbGxKUmhnUXAiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzEzMTI5NDUwLCJpYXQiOjE3MTMxMjU4NTAsImlzcyI6Imh0dHBzOi8veG10Z2F5bGdwY2pzZHptbnhpb3Auc3VwYWJhc2UuY28vYXV0aC92MSIsInN1YiI6IjQ0Njc3YzU4LTZjMGQtNDc5OS1iZjQwLTUxZjJiYzA1YWNmMiIsImVtYWlsIjoidXNlci5tYWlsMGVuY3J5cHRAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJlbWFpbCI6InVzZXIubWFpbDBlbmNyeXB0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJzdWIiOiI0NDY3N2M1OC02YzBkLTQ3OTktYmY0MC01MWYyYmMwNWFjZjIifSwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJhYWwiOiJhYWwxIiwiYW1yIjpbeyJtZXRob2QiOiJwYXNzd29yZCIsInRpbWVzdGFtcCI6MTcxMzEyNTg1MH1dLCJzZXNzaW9uX2lkIjoiMTNhMWZmMTQtMWIwZC00NzNmLTlkM2ItMzFlNGMyM2I4MzdmIiwiaXNfYW5vbnltb3VzIjpmYWxzZX0.94Q5ZHY3SutX3bbp9AvJ9xdzCz0SRzWLELfTkOfL1eU
+ts=2024-04-14T20:20:35.6231314Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-14T20:20:51.8836057Z caller=home.go:10 accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6Ik1ZZGZ3b1JVbGxKUmhnUXAiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzEzMTI5NDUwLCJpYXQiOjE3MTMxMjU4NTAsImlzcyI6Imh0dHBzOi8veG10Z2F5bGdwY2pzZHptbnhpb3Auc3VwYWJhc2UuY28vYXV0aC92MSIsInN1YiI6IjQ0Njc3YzU4LTZjMGQtNDc5OS1iZjQwLTUxZjJiYzA1YWNmMiIsImVtYWlsIjoidXNlci5tYWlsMGVuY3J5cHRAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJlbWFpbCI6InVzZXIubWFpbDBlbmNyeXB0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJzdWIiOiI0NDY3N2M1OC02YzBkLTQ3OTktYmY0MC01MWYyYmMwNWFjZjIifSwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJhYWwiOiJhYWwxIiwiYW1yIjpbeyJtZXRob2QiOiJwYXNzd29yZCIsInRpbWVzdGFtcCI6MTcxMzEyNTg1MH1dLCJzZXNzaW9uX2lkIjoiMTNhMWZmMTQtMWIwZC00NzNmLTlkM2ItMzFlNGMyM2I4MzdmIiwiaXNfYW5vbnltb3VzIjpmYWxzZX0.94Q5ZHY3SutX3bbp9AvJ9xdzCz0SRzWLELfTkOfL1eU
+ts=2024-04-14T20:20:52.1863683Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-14T20:21:16.1094053Z caller=home.go:10 accessToken=
+ts=2024-04-14T20:36:44.8662895Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-14T20:41:40.9704456Z caller=auth.go:79 msg="user signup with email" id=f1a16531-93d4-4b7c-9c73-99a50cd6e480
+ts=2024-04-14T20:44:35.1947858Z caller=auth.go:182 msg="user signup with email" id=f1a16531-93d4-4b7c-9c73-99a50cd6e480
+ts=2024-04-14T20:45:45.074403Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T20:45:55.0163666Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T20:45:56.2003216Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T20:46:48.8596218Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T20:53:19.9784347Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T20:53:47.8257371Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T20:58:54.7454718Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-14T21:28:56.4234511Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-14T21:28:57.9811802Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-14T21:32:51.1398854Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-14T21:33:31.8105598Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-14T21:33:32.2488891Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-14T21:49:06.0984108Z caller=auth.go:79 msg="user signup with email" id=9b5d5144-a5d0-47fc-8488-769b97481a8b
+ts=2024-04-14T21:50:11.4044146Z caller=auth.go:182 msg="user signup with email" id=9b5d5144-a5d0-47fc-8488-769b97481a8b
+ts=2024-04-14T21:50:50.8000251Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T21:50:54.1283877Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T21:50:57.0109491Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T21:50:57.2090372Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T21:50:57.3460163Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T21:50:57.4875719Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T21:51:57.6527012Z caller=error.go:25 error="email not found in session"
+ts=2024-04-14T21:52:02.6999657Z caller=error.go:25 error="email not found in session"
+ts=2024-04-14T21:52:06.8566766Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T21:55:25.8152318Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-14T21:56:05.4447306Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-15T10:35:53.3969821Z caller=auth.go:79 msg="user signup with email" id=40aef8cf-1dc6-465a-a516-b8c342de760f
+ts=2024-04-15T10:38:19.4573026Z caller=auth.go:79 msg="user signup with email" id=40aef8cf-1dc6-465a-a516-b8c342de760f
+ts=2024-04-15T10:39:26.0832197Z caller=error.go:25 error="email not found in session"
+ts=2024-04-15T10:39:30.3371513Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-15T20:42:06.7169483Z caller=auth.go:79 msg="user signup with email" id=40aef8cf-1dc6-465a-a516-b8c342de760f
+ts=2024-04-15T20:42:22.1699125Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-15T20:46:43.6694296Z caller=error.go:25 error="failed to render: [Error (where: parser) in <string> | Line 29 Col 4 near 'endblock'] Tag 'endblock' not found (or beginning tag not provided)"
+ts=2024-04-16T21:44:40.6582734Z caller=middleware.go:41 error="authentication error" err="probably invalid access token"
+ts=2024-04-16T21:44:53.409823Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-16T22:05:56.1799524Z caller=error.go:25 error="ERROR: invalid input syntax for type integer: \"%7Btracking.ID%7D\" (SQLSTATE=22P02)"
+ts=2024-04-16T22:12:08.5008232Z caller=error.go:25 error="ERROR: invalid input syntax for type integer: \"%7Btracking.ID%7D\" (SQLSTATE=22P02)"
+ts=2024-04-16T22:12:55.518838Z caller=error.go:25 error="ERROR: invalid input syntax for type integer: \"show\" (SQLSTATE=22P02)"
+ts=2024-04-16T22:12:57.4785344Z caller=error.go:25 error="ERROR: invalid input syntax for type integer: \"show\" (SQLSTATE=22P02)"
+ts=2024-04-16T22:14:03.2688613Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-16T22:14:04.2227318Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-16T22:14:07.8977327Z caller=error.go:25 error="ERROR: invalid input syntax for type integer: \"%7Btracking.ID%7D\" (SQLSTATE=22P02)"
+ts=2024-04-16T22:15:11.6746789Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-19T19:58:46.0122094Z caller=error.go:25 error="failed to render: [Error (where: lexer) in <string> | Line 43 Col 91] Newline in string is not allowed."
+ts=2024-04-19T20:00:07.3612241Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-19T20:11:44.9794287Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-19T21:12:04.7590799Z caller=middleware.go:41 error="authentication error" err="probably invalid access token"
+ts=2024-04-19T21:12:12.1306994Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-19T21:59:09.52393Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-19T22:00:25.5863288Z caller=auth.go:79 msg="user signup with email" id=6fa94165-d9b9-4972-ace2-85dedf131170
+ts=2024-04-19T22:02:01.9365998Z caller=auth.go:182 msg="user signup with email" id=6fa94165-d9b9-4972-ace2-85dedf131170
+ts=2024-04-19T22:02:05.0168827Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-19T22:02:53.9868511Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-19T22:07:44.9829296Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-19T22:09:38.0493864Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-19T22:09:51.6351081Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-19T22:17:53.4417349Z caller=auth.go:156 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-20T19:12:28.9439373Z caller=auth.go:79 msg="user signup with email" id=4ebc01d1-605d-424e-ad9d-3197797089fa
+ts=2024-04-20T19:12:44.2183947Z caller=error.go:25 error="unknown plan: "
+ts=2024-04-20T19:14:22.1564561Z caller=middleware.go:41 error="authentication error" err="probably invalid access token"
+ts=2024-04-20T19:14:38.1278435Z caller=auth.go:79 msg="user signup with email" id=2a049494-b67e-4673-9847-a8b66e2bd151
+ts=2024-04-20T19:14:53.2905597Z caller=error.go:25 error="unknown plan: "
+ts=2024-04-20T19:52:33.6314234Z caller=error.go:25 error="unknown plan: "
+ts=2024-04-20T19:52:35.6461641Z caller=error.go:25 error="unknown plan: "
+ts=2024-04-20T19:52:37.603125Z caller=error.go:25 error="unknown plan: "
+ts=2024-04-20T19:52:39.8470391Z caller=error.go:25 error="unknown plan: "
+ts=2024-04-20T19:52:43.1027968Z caller=error.go:25 error="unknown plan: "
+ts=2024-04-20T19:53:15.8491303Z caller=auth.go:79 msg="user signup with email" id=350ecd41-dbd2-4799-848e-73a6fbfaba09
+ts=2024-04-20T19:54:59.9258989Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-20T20:43:10.6231052Z caller=auth.go:79 msg="user signup with email" id=5c761bf3-9eb7-4ce9-bc56-00b68d9d41d6
+ts=2024-04-20T20:43:33.1523597Z caller=account.go:109 event="new account signup" id=6
+ts=2024-04-20T20:43:33.1531694Z caller=auth.go:156 info="user signin" userID=5c761bf3-9eb7-4ce9-bc56-00b68d9d41d6 accountID=6
+ts=2024-04-20T20:44:23.2938022Z caller=auth.go:79 msg="user signup with email" id=7d0c5254-1cad-4391-a7dd-7f3af3ccd707
+ts=2024-04-20T20:45:35.3063866Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-20T20:46:58.2004784Z caller=error.go:25 error="Cannot GET /reset"
+ts=2024-04-20T21:45:56.3430653Z caller=auth.go:79 msg="user signup with email" id=48410127-ed0b-4884-a011-a1f7d8d00fd3
+ts=2024-04-20T21:48:51.8015101Z caller=auth.go:79 msg="user signup with email" id=6b0c559f-f93f-4a0b-b2dd-9f00b0adbb80
+ts=2024-04-20T21:50:46.70569Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-20T21:56:17.6330331Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-20T21:58:57.3079606Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-20T22:01:10.3367909Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-20T22:03:37.9937693Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-20T22:04:09.5905442Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-20T22:05:12.5912452Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-20T22:05:38.4260634Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-20T22:05:48.9651686Z caller=auth.go:155 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4
+ts=2024-04-20T22:06:02.1958978Z caller=error.go:25 error="Cannot GET /domains/4/test_notification"
+ts=2024-04-20T22:06:32.4854258Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-20T22:09:07.2937405Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-20T22:09:25.9402167Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-20T22:11:29.0171823Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-20T22:14:08.9542722Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-20T22:16:43.1822721Z caller=auth.go:79 msg="user signup with email" id=1c795507-d8e3-446e-8635-eaadc648d375
+ts=2024-04-20T22:19:20.0946206Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-20T22:48:11.2051086Z caller=auth.go:79 msg="user signup with email" id=0c12876e-0d7b-4216-8a18-a4a2c16a5cbf
+ts=2024-04-20T22:49:30.4813073Z caller=auth.go:79 msg="user signup with email" id=f632af33-4b38-42f1-8abe-1522e2e3766b
+ts=2024-04-20T22:49:36.895023Z caller=account.go:119 event="new account signup" id=7
+ts=2024-04-20T22:49:36.895023Z caller=auth.go:155 info="user signin" userID=f632af33-4b38-42f1-8abe-1522e2e3766b accountID=7
+ts=2024-04-20T22:52:31.1805506Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-21T10:48:36.4828112Z caller=auth.go:155 info="user signin" userID=f632af33-4b38-42f1-8abe-1522e2e3766b accountID=7
+ts=2024-04-21T10:49:11.1669662Z caller=auth.go:155 info="user signin" userID=f632af33-4b38-42f1-8abe-1522e2e3766b accountID=7
+ts=2024-04-21T10:49:28.1065037Z caller=auth.go:155 info="user signin" userID=f632af33-4b38-42f1-8abe-1522e2e3766b accountID=7
+ts=2024-04-21T10:50:38.8565066Z caller=auth.go:155 info="user signin" userID=f632af33-4b38-42f1-8abe-1522e2e3766b accountID=7
+ts=2024-04-21T11:06:50.8889526Z caller=auth.go:79 msg="user signup with email" id=83dfc033-d9da-40fb-a581-ade056485b72
+ts=2024-04-21T11:07:44.374438Z caller=account.go:119 event="new account signup" id=8
+ts=2024-04-21T11:07:44.374438Z caller=auth.go:155 info="user signin" userID=83dfc033-d9da-40fb-a581-ade056485b72 accountID=8
+ts=2024-04-21T11:08:02.746371Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-21T11:12:14.6821839Z caller=error.go:25 error="email not found in session"
+ts=2024-04-21T11:19:21.3723452Z caller=error.go:25 error="email not found in session"
+ts=2024-04-21T11:54:31.2880403Z caller=auth.go:155 info="user signin" userID=f632af33-4b38-42f1-8abe-1522e2e3766b accountID=7
+ts=2024-04-21T12:01:16.3310776Z caller=auth.go:79 msg="user signup with email" id=ca34ba55-0f82-44d4-a151-4a741f6ec07b
+ts=2024-04-21T12:01:26.317322Z caller=account.go:119 event="new account signup" id=9
+ts=2024-04-21T12:01:26.3375302Z caller=auth.go:155 info="user signin" userID=ca34ba55-0f82-44d4-a151-4a741f6ec07b accountID=9
+ts=2024-04-21T16:27:03.9319188Z caller=middleware.go:41 error="authentication error" err="probably invalid access token"
+ts=2024-04-21T16:29:11.8701222Z caller=error.go:25 error="Cannot GET /auth/update_pass"
+ts=2024-04-21T16:29:50.9057156Z caller=error.go:25 error="For security purposes, you can only request this once every 60 seconds"
+ts=2024-04-21T16:30:53.5194953Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-21T16:40:19.8877222Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-21T16:45:10.890618Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-21T16:53:52.4708483Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-21T17:00:35.9456266Z caller=error.go:25 error="Cannot GET /auth/update_pass"
+ts=2024-04-21T17:03:13.3123012Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-21T17:04:04.5411398Z caller=error.go:25 error="Cannot GET /auth/update_pass"
+ts=2024-04-21T17:04:34.5559952Z caller=error.go:25 error="Cannot GET /auth/update_pass"
+ts=2024-04-21T17:04:50.2147098Z caller=error.go:25 error="failed to render: template update_pass does not exist"
+ts=2024-04-21T17:05:06.4699003Z caller=error.go:25 error="failed to render: template /update_pass does not exist"
+ts=2024-04-21T17:06:03.6582643Z caller=error.go:25 error="Cannot GET /auth/update_pass"
+ts=2024-04-21T17:06:50.7064196Z caller=error.go:25 error="failed to render: template /update_pass does not exist"
+ts=2024-04-21T17:07:04.971506Z caller=error.go:25 error="failed to render: template /auth/update_pass does not exist"
+ts=2024-04-21T17:09:30.5969266Z caller=error.go:25 error="Cannot GET /pass_updated"
+ts=2024-04-21T17:11:09.1488949Z caller=error.go:25 error="Cannot GET /auth/pass_updated"
+ts=2024-04-21T17:11:16.4442087Z caller=error.go:25 error="Cannot GET /pass_updated"
+ts=2024-04-21T17:12:51.9646202Z caller=error.go:25 error="Требуется токен пользователя для обновления пароля"
+ts=2024-04-21T17:22:29.4932089Z caller=error.go:25 error="Cannot GET /update_password"
+ts=2024-04-21T17:23:00.8451191Z caller=error.go:25 error="Требуется токен пользователя для обновления пароля"
+ts=2024-04-21T17:44:05.1796262Z caller=error.go:25 error="Требуется токен пользователя для обновления пароля"
+ts=2024-04-21T17:44:31.9905277Z caller=auth.go:155 info="user signin" userID=ca34ba55-0f82-44d4-a151-4a741f6ec07b accountID=9
+ts=2024-04-21T17:46:20.2493826Z caller=auth.go:237 msg="user reset pass with email" yarikdolgopol@yandex.ru=(MISSING)
+ts=2024-04-21T17:46:40.0675299Z caller=auth.go:155 info="user signin" userID=ca34ba55-0f82-44d4-a151-4a741f6ec07b accountID=9
+ts=2024-04-21T17:46:49.8191734Z caller=auth.go:268 msg="user update pass with email" yarikdolgopol@yandex.ru=(MISSING)
+ts=2024-04-21T17:47:00.0358125Z caller=auth.go:155 info="user signin" userID=ca34ba55-0f82-44d4-a151-4a741f6ec07b accountID=9
+ts=2024-04-21T17:49:13.1641055Z caller=error.go:25 error="Cannot GET /pass_updated"
+ts=2024-04-21T17:49:21.1325272Z caller=error.go:25 error="Cannot GET /auth/pass_updated"
+ts=2024-04-21T17:49:37.4184458Z caller=error.go:25 error="Email rate limit exceeded"
+ts=2024-04-21T17:50:29.3280277Z caller=error.go:25 error="Требуется токен пользователя для обновления пароля"
+ts=2024-04-21T17:50:36.85342Z caller=error.go:25 error="Cannot GET /auth/pass_updated"
+ts=2024-04-21T17:50:37.1955404Z caller=error.go:25 error="Cannot GET /pass_updated"
+ts=2024-04-21T17:50:37.9604986Z caller=error.go:25 error="Cannot GET /auth/pass_updated"
+ts=2024-04-21T17:50:38.8689901Z caller=error.go:25 error="Cannot GET /pass_updated"
+ts=2024-04-21T17:51:07.0600544Z caller=error.go:25 error="Cannot GET /auth/pass_updated"
+ts=2024-04-21T17:51:14.2727488Z caller=error.go:25 error="Cannot GET /pass_updated"
+ts=2024-04-21T17:51:14.5212003Z caller=error.go:25 error="Cannot GET /pass_updated"
+ts=2024-04-21T22:34:39.8577094Z caller=auth.go:206 msg="user reset pass with email" email=yarikdolgopol@yandex.ru
+ts=2024-04-21T22:35:05.2376536Z caller=auth.go:155 info="user signin" userID=ca34ba55-0f82-44d4-a151-4a741f6ec07b accountID=9
+ts=2024-04-21T22:35:36.550789Z caller=auth.go:237 msg="user update pass with email" email=yarikdolgopol@yandex.ru
+ts=2024-04-21T22:36:47.7377409Z caller=error.go:25 error=
+ts=2024-04-21T22:37:01.7185477Z caller=auth.go:206 msg="user reset pass with email" email=yarikdolgopol@yandex.ru
+ts=2024-04-21T22:37:12.1437597Z caller=auth.go:155 info="user signin" userID=ca34ba55-0f82-44d4-a151-4a741f6ec07b accountID=9
+ts=2024-04-21T22:37:27.2759518Z caller=auth.go:237 msg="user update pass with email" email=yarikdolgopol@yandex.ru
+ts=2024-04-22T18:51:24.6845911Z caller=auth.go:155 info="user signin" userID=44677c58-6c0d-4799-bf40-51f2bc05acf2 accountID=4

@@ -5,13 +5,21 @@ import (
 )
 
 func HandleGetHome(c *fiber.Ctx) error {
-	accessToken := c.Cookies("accessToken")
+	accessToken := c.Query("access_token")
 	// logger.Log("accessToken", accessToken)
 	if len(accessToken) > 0 {
 		return c.Redirect("/auth/callback/" + accessToken)
 	}
 	return c.Render("home/index", fiber.Map{})
 }
+
+// HandleGetReset(c *fiber.Ctx) error {
+// 	token := c.Query("token")
+// 	if len(accessToken) > 0 {
+// 		return c.Redirect("/auth/callback/" + accessToken)
+// 	}
+// 	return c.Render("home/index", fiber.Map{})
+// }
 
 func HandleGetPricing(c *fiber.Ctx) error {
 	context := fiber.Map{

@@ -1,0 +1,24 @@
+{% extends "partials/base.html" %}
+
+{% block content %}
+<div class="container mx-auto mt-20">
+	<div class="flex justify-center items-center flex-col">
+		<div class="w-full md:w-96 rounded-lg p-8 shadow-lg">
+			<h1 class="text-4xl font-bold text-center mb-10">Восстановление пароля</h1>
+			<form action="/reset" method="POST">
+				<div class="form-control">
+					<div class="mb-4">
+						<input class="input input-bordered input-default w-full" placeholder="email" type="email"
+							name="email"/>
+					</div>
+					{% if flash.emailError %}
+					<p class="text-error text-sm mb-4">{{ flash.emailError }}</p>
+					{% endif %}
+					<button type="submit" class="btn btn-primary w-full">Обновить</button>
+				</div>
+			</form>
+		</div>
+		<a href="/signin" class="my-10 underline text-primary">Вспомнили пароль? Войдите здесь.</a>
+	</div>
+</div>
+{% endblock %}

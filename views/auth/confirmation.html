@@ -5,7 +5,7 @@
     <div class="w-full text-center">
         <div class="text-lg mb-4">
             <p>Благодарим за регистрацию на нашем сайте! Ссылка для подтверждения регистрации была отправлена на вашу почту {{ email }} </p>
-            <p>Если вы не получили email - подождите пока вы сможете отправить подтверждение снова.</p>
+            <p class="mt-5">Если вы не получили email - подождите пока вы сможете отправить подтверждение снова.</p>
         </div>
         <div class="mt-5">
             <button type="button" hx-get="/confirmation" class="btn btn-secondary btn-sm" id="but" disabled>Отправить</button>
@@ -26,6 +26,12 @@
         }
     }
 
-    setInterval(updateButtonState, 1000);
+    function updateButtonText() {
+        const resendButton = document.getElementById("but");
+        resendButton.innerText = "Отправить";
+    }
+
+    setInterval(updateButtonState, 31500);
+    setInterval(updateButtonText, 1000);
 </script>
 {% endblock %}

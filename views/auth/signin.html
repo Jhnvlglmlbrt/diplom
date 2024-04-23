@@ -17,12 +17,13 @@
 					{% if flash.authError %}
 					<p class="text-error text-sm mb-4">{{ flash.authError }}</p>
 					{% endif %}
-					<button type="submit" class="btn btn-primary w-full">Sign in</button>
+					<button type="submit" class="btn btn-primary w-full">Войти</button>
 				</div>
 			</form>
 			{% comment %} {% include "partials/google-signin.html" %} {% endcomment %}
 		</div>
-		<a href="/signup" class="my-10 underline text-primary">Нету аккаунта? Зарегистрируйся здесь.</a>
+		<a href="/signup" class="mt-10 underline text-primary">Нету аккаунта? Зарегистрируйся здесь.</a>
+		<a href="/reset" class="mt-5 underline text-primary">Забыли пароль? Восстановить.</a>
 	</div>
 </div>
 {% endblock %}

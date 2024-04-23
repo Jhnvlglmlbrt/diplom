@@ -12,6 +12,14 @@ func IsValidWebhook(url string) bool {
 	return false
 }
 
+func IsErrEmailRateExceeded(err error) bool {
+	return strings.Contains(err.Error(), "Email rate limit exceeded")
+}
+
+func IsErrNoEmailFound(err error) bool {
+	return strings.Contains(err.Error(), "email not found in session")
+}
+
 func IsErrNoRecords(err error) bool {
 	return strings.Contains(err.Error(), "sql: no rows in result set")
 }
@@ -27,7 +35,6 @@ func IsValidEmail(email string) bool {
 	return regex.MatchString(email)
 }
 
-// Thank you ChatGPT
 func IsValidPassword(password string) bool {
 	if len(password) < 7 {
 		return false

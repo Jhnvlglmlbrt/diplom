@@ -1,0 +1,30 @@
+{% extends "partials/base.html" %}
+
+{% block content %}
+<div class="container mx-auto mt-20">
+    <div class="flex justify-center items-center flex-col">
+        <div class="w-full md:w-96 rounded-lg p-8 shadow-lg">
+            <h1 class="text-4xl font-bold text-center mb-10">Обновление пароля</h1>
+            <form action="/update_pass" method="POST">
+                <div class="form-control">
+                    <div class="mb-4"> <input class="input input-bordered input-default w-full" placeholder="Новый пароль" type="password"
+                            name="password"/>
+                    </div>
+                    {% if flash.passwordError %}
+					<div class="mb-4 p-2 border border-error rounded-lg">
+						<p class="text-error text-sm mb-2">{{ flash.passwordError }}</p>
+						<ul class="text-xs">
+							<li>At least 1 uppercase character</li>
+							<li>At least 1 digit</li>
+							<li>At least 1 special character such as @ or _</li>
+						</ul>
+					</div>
+					{% endif %}
+                    <button type="submit" class="btn btn-primary w-full">Обновить пароль</button>
+                    <p class="mt-4 text-center text-sm">Сначала перейдите по ссылке в email.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -67,6 +67,16 @@ func GetUserAccount(userID string) (*Account, error) {
 	return account, err
 }
 
+func GetAccountByEmail(email string) (*Account, error) {
+	account := new(Account)
+	ctx := context.Background()
+	err := db.Bun.NewSelect().
+		Model(account).
+		Where("notify_default_email = ?", email).
+		Scan(ctx)
+	return account, err
+}
+
 // func GetAccount(query fiber.Map) (*Account, error) {
 // 	account := new(Account)
 // 	builder := db.Bun.NewSelect().Model(account)

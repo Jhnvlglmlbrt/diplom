@@ -127,7 +127,6 @@ func HandleGetSignout(c *fiber.Ctx) error {
 	return c.Redirect("/")
 }
 
-// This is the main callback that will be triggered after each authentication.
 func HandleAuthCallback(c *fiber.Ctx) error {
 	accessToken := c.Params("accessToken")
 	if len(accessToken) == 0 {
@@ -146,7 +145,7 @@ func HandleAuthCallback(c *fiber.Ctx) error {
 		return err
 	}
 
-	selectedPlan := c.Cookies("pn")
+	selectedPlan := c.Cookies("p")
 
 	acc, err := data.CreateAccountForUserIfNotExist(user, selectedPlan, data.SubscriptionStatusActive)
 	if err != nil {
@@ -181,7 +180,63 @@ func HandleResendConfirmationEmail(c *fiber.Ctx) error {
 
 	logger.Log("msg", "user signup with email", "id", resp.ID)
 
-	return nil
+	pageLoadTime := time.Now().UnixNano() / int64(time.Millisecond)
+
+	return c.Render("auth/confirmation", fiber.Map{"email": signupParams.Email, "pageLoadTime": pageLoadTime})
+}
+
+func HandleGetReset(c *fiber.Ctx) error {
+	return c.Render("auth/reset", fiber.Map{})
+}
+
+func HandleReset(c *fiber.Ctx) error {
+	email := c.FormValue("email")
+
+	_, err := data.GetAccountByEmail(email)
+	if err != nil {
+		return flash.WithData(c, fiber.Map{"emailError": "Пользователя с таким email не существует"}).Redirect("/reset")
+	}
+
+	client := createSupabaseClient()
+	err = client.Auth.ResetPasswordForEmail(context.Background(), email)
+	if err != nil {
+		return err
+	}
+
+	logger.Log("msg", "user reset pass with email", "email", email)
+
+	return c.Redirect("/update_pass")
+}
+
+func HandleGetUpdatePassword(c *fiber.Ctx) error {
+	return c.Render("auth/update_pass", fiber.Map{})
+}
+
+func HandleUpdatePassword(c *fiber.Ctx) error {
+	password := c.FormValue("password")
+
+	if !util.IsValidPassword(password) {
+		return flash.WithData(c, fiber.Map{"passwordError": "Пароль не соответствует требованиям"}).Redirect("/update_pass")
+	}
+
+	userToken := c.Cookies("accessToken")
+	if userToken == "" {
+		return fiber.NewError(fiber.StatusBadRequest, "Требуется токен пользователя для обновления пароля")
+	}
+
+	updateData := map[string]interface{}{
+		"password": password,
+	}
+
+	client := createSupabaseClient()
+	user, err := client.Auth.UpdateUser(context.Background(), userToken, updateData)
+	if err != nil {
+		return err
+	}
+
+	logger.Log("msg", "user update pass with email", "email", user.Email)
+
+	return c.Render("auth/pass_updated", fiber.Map{"email": user.Email})
 }
 
 func createSupabaseClient() *supabase.Client {

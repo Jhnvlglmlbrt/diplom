@@ -56,12 +56,12 @@
     color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity)));
 }
 
-/* .loader{
+.spinner{
 	display:none;
 }
-.htmx-request .loader{
+.htmx-request .spinner{
 	display:inline;
 }
-.htmx-request.loader {
+.htmx-request.spinner {
 	display:inline;
-} */
+}

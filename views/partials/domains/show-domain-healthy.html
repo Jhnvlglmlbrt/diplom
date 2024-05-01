@@ -1,0 +1,70 @@
+<div class="w-full">
+	<div class="mb-6">
+		<h1 class="text-3xl font-bold mb-4">{{ tracking.DomainName }} </h1>
+		<p class="text-sm font-bold mb-5 mt-5"> IP - {{ tracking.ServerIP }} </p>
+		<p >Истекает через {{ daysLeft(tracking.Expires) }}.</p>
+	</div>
+	{% include "partials/domains/show-actions.html" %}
+	<div class="mt-6 border-t border-base-200">
+		<dl class="divide-y divide-base-200">
+			<div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+				<dt class="text-sm font-medium leading-6">Статус</dt>
+				<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">
+					{{ badgeForStatus(tracking.Status) }}
+				</dd>
+			</div>
+			<div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+				<dt class="text-sm font-medium leading-6">Тип</dt>
+				<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">{{ tracking.KeyUsage }}</dd>
+			</div>
+			<div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+				<dt class="text-sm font-medium leading-6">Издатель</dt>
+				<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">{{ tracking.Issuer }}</dd>
+			</div>
+			<div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+				<dt class="text-sm font-medium leading-6">Цель использования</dt>
+				<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">
+					{% for usage in tracking.ExtKeyUsages %}
+					<span class="badge">{{usage}}</span>
+					{% endfor %}
+				</dd>
+			</div>
+			<div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+				<dt class="text-sm font-medium leading-6">Истекает через</dt>
+				<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">
+					{{ formatTime(tracking.Expires) }}
+				</dd>
+			</div>
+			<div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+				<dt class="text-sm font-medium leading-6">Задержка</dt>
+				<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">{{ tracking.Latency }}</dd>
+			</div>
+			<div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+				<dt class="text-sm font-medium leading-6">Сертификат</dt>
+				<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0"><a target="_blank"
+						href="/domains/{{tracking.ID}}/raw" class="btn btn-neutral btn-xs">смотреть</a></dd>
+			</div>
+			<div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+				<dt class="text-sm font-medium leading-6">DNS</dt>
+				<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">{{ tracking.DNSNames }}</dd>
+			</div>
+			<div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+				<dt class="text-sm font-medium leading-6">Публичный ключ</dt>
+				<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0"><code>{{ tracking.PublicKey }}</code></dd>
+			</div>
+
+			<div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+				<dt class="text-sm font-medium leading-6">Подпись</dt>
+				<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">
+					<code>{{ tracking.Signature }}</code>
+				</dd>
+			</div>
+			<div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+				<dt class="text-sm font-medium leading-6">Последняя проверка</dt>
+				<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">
+					{{ timeAgo(tracking.LastPollAt) }}
+				</dd>
+			</div>
+		</dl>
+	</div>
+</div>

@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/Jhnvlglmlbrt/monitoring-certs/data"
+	"github.com/Jhnvlglmlbrt/monitoring-certs/logger"
 	"github.com/Jhnvlglmlbrt/monitoring-certs/settings"
 	"github.com/Jhnvlglmlbrt/monitoring-certs/util"
 	"github.com/gofiber/fiber/v2"
@@ -62,10 +63,13 @@ func HandleAccountShow(c *fiber.Ctx) error {
 	if err != nil {
 		return err
 	}
+	logger.Log("account", account.ID)
+
 	context := fiber.Map{
-		"account":           account,
-		"customerPortalURL": os.Getenv("STRIPE_PORTAL_URL"),
-		"settings":          settings.Account[account.Plan],
+		"account":   account,
+		"PortalURL": os.Getenv("DISCORD_PORTAL_URL"),
+		"settings":  settings.Account[account.PlanID],
 	}
+
 	return c.Render("account/show", context)
 }

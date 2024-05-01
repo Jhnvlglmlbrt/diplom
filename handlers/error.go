@@ -32,6 +32,8 @@ func ErrorHandler(c *fiber.Ctx, err error) error {
 		return render401(c)
 	} else if util.IsErrEmailRateExceeded(err) {
 		return render429(c)
+	} else if util.IfIsOldPass(err) {
+		return render400(c)
 	}
 	return render500(c)
 }
@@ -50,4 +52,8 @@ func render401(c *fiber.Ctx) error {
 
 func render429(c *fiber.Ctx) error {
 	return c.Status(429).Render("errors/429", fiber.Map{})
+}
+
+func render400(c *fiber.Ctx) error {
+	return c.Status(429).Render("errors/400", fiber.Map{})
 }

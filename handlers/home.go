@@ -1,6 +1,9 @@
 package handlers
 
 import (
+	"fmt"
+
+	"github.com/Jhnvlglmlbrt/monitoring-certs/data"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -25,7 +28,23 @@ func HandleGetPricing(c *fiber.Ctx) error {
 	context := fiber.Map{
 		"starterDomains":    2,
 		"businessDomains":   50,
-		"enterpriseDomains": 500,
+		"enterpriseDomains": 200,
 	}
 	return c.Render("home/pricing", context)
+}
+
+func HandleGetPlans(c *fiber.Ctx) error {
+	plans, err := data.GetAllPlans()
+	if err != nil {
+		return err
+	}
+
+	return c.Render("home/pricing1", fiber.Map{
+		"plans":       plans,
+		"formatPrice": formatPrice,
+	})
+}
+
+func formatPrice(price float64) string {
+	return fmt.Sprintf("%.f", price)
 }

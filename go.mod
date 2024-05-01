@@ -3,10 +3,11 @@ module github.com/Jhnvlglmlbrt/monitoring-certs
 go 1.21.5
 
 require (
+	github.com/davecgh/go-spew v1.1.1
 	github.com/gofiber/template/django/v3 v3.1.8
 	github.com/nedpals/supabase-go v0.4.0
 	github.com/sujit-baniya/flash v0.1.8
-	github.com/uptrace/bun v1.2.1
+	github.com/uptrace/bun v1.1.14
 )
 
 require (
@@ -38,9 +39,9 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mattn/go-runewidth v0.0.15 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
-	github.com/uptrace/bun/dialect/pgdialect v1.2.1
-	github.com/uptrace/bun/driver/pgdriver v1.2.1
-	github.com/uptrace/bun/extra/bundebug v1.2.1
+	github.com/uptrace/bun/dialect/pgdialect v1.1.14
+	github.com/uptrace/bun/driver/pgdriver v1.1.14
+	github.com/uptrace/bun/extra/bundebug v1.1.14
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.52.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect

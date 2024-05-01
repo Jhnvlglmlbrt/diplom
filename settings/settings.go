@@ -3,10 +3,10 @@ package settings
 import "github.com/Jhnvlglmlbrt/monitoring-certs/data"
 
 type accountSettings struct {
-	MaxTrackings     int
-	Webhooks         bool
-	SlackIntegration bool
-	TeamsIntegration bool
+	MaxTrackings       int
+	Webhooks           bool
+	DiscordIntegration bool
+	TeamsIntegration   bool
 }
 
 var Account = map[data.Plan]accountSettings{
@@ -14,14 +14,14 @@ var Account = map[data.Plan]accountSettings{
 		MaxTrackings: 2,
 	},
 	data.PlanBusiness: {
-		MaxTrackings:     20,
-		Webhooks:         true,
-		SlackIntegration: true,
+		MaxTrackings:       50,
+		Webhooks:           true,
+		DiscordIntegration: true,
 	},
 	data.PlanEnterprise: {
-		MaxTrackings:     200,
-		Webhooks:         true,
-		SlackIntegration: true,
-		TeamsIntegration: true,
+		MaxTrackings:       200,
+		Webhooks:           true,
+		DiscordIntegration: true,
+		TeamsIntegration:   true,
 	},
 }

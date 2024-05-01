@@ -12,6 +12,9 @@ func IsValidWebhook(url string) bool {
 	return false
 }
 
+func IfIsOldPass(err error) bool {
+	return strings.Contains(err.Error(), "")
+}
 func IsErrEmailRateExceeded(err error) bool {
 	return strings.Contains(err.Error(), "Email rate limit exceeded")
 }
@@ -65,7 +68,7 @@ func Pluralize(word string, amount int) string {
 		return word
 	}
 
-	return word + "s"
+	return word + "ов"
 }
 
 func DaysLeft(t time.Time) string {
@@ -73,5 +76,5 @@ func DaysLeft(t time.Time) string {
 	if t.Equal(timeZero) {
 		return "n/a"
 	}
-	return fmt.Sprintf("%d days", time.Until(t)/(time.Hour*24))
+	return fmt.Sprintf("%d дней", time.Until(t)/(time.Hour*24))
 }

@@ -56,6 +56,19 @@
     color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity)));
 }
 
+.badge-info {
+    border-color: transparent;
+    --tw-bg-opacity: 1;
+    background-color: var(--fallback-er, #FFA500); /* Оранжевый цвет */
+    --tw-text-opacity: 1;
+    color: var(--fallback-erc, #000000); /* Оранжевый цвет */
+}
+
+.badge-outline.badge-info {
+    --tw-text-opacity: 1;
+    color: var(--fallback-er, #FFA500); /* Оранжевый цвет */
+}
+
 .spinner{
 	display:none;
 }

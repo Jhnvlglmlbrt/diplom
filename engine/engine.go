@@ -38,7 +38,7 @@ func CreateEngine() *django.Engine {
 		case data.StatusExpires:
 			return fmt.Sprintf(`<div class="badge badge-warning">%s</div>`, status)
 		case data.StatusExpired:
-			return fmt.Sprintf(`<div class="badge badge-accent">%s</div>`, status)
+			return fmt.Sprintf(`<div class="badge badge-info">%s</div>`, status)
 		case data.StatusUnresponsive:
 			return fmt.Sprintf(`<div class="badge badge-accent">%s</div>`, status)
 		case data.StatusInvalid:

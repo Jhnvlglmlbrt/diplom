@@ -44,17 +44,20 @@ const (
 )
 
 type Account struct {
-	ID                 int64 `bun:",pk,autoincrement"`
-	UserID             string
+	ID                 int64  `bun:"id,pk,autoincrement"`
+	UserID             string `bun:"user_id"`
 	SubscriptionStatus string
-	Plan               Plan
 	NotifyUpfront      int
 	NotifyDefaultEmail string
+	PlanID             Plan
 }
 
 type Plans struct {
-	ID   int64 `bun:",pk,autoincrement"`
-	Name string
+	ID          int64    `bun:"id,pk,autoincrement"`
+	Name        string   `bun:"name"`
+	Price       float64  `bun:"price"`
+	Description string   `bun:"description"`
+	Features    []string `bun:"features,type:text[]"`
 }
 
 func GetUserAccount(userID string) (*Account, error) {
@@ -77,16 +80,6 @@ func GetAccountByEmail(email string) (*Account, error) {
 	return account, err
 }
 
-// func GetAccount(query fiber.Map) (*Account, error) {
-// 	account := new(Account)
-// 	builder := db.Bun.NewSelect().Model(account)
-// 	for k, v := range query {
-// 		builder.Where("? = ?", bun.Ident(k), v)
-// 	}
-// 	err := builder.Scan(context.Background())
-// 	return account, err
-// }
-
 func UpdateAccount(acc *Account) error {
 	_, err := db.Bun.NewUpdate().
 		Model(acc).
@@ -96,6 +89,10 @@ func UpdateAccount(acc *Account) error {
 }
 
 func CreateAccountForUserIfNotExist(user *supabase.User, selectedPlan string, subscriptionStatus string) (*Account, error) {
+	if exists, err := PlanExistsByName(selectedPlan); err != nil || !exists {
+		return nil, err
+	}
+
 	if acc, err := GetUserAccount(user.ID); err == nil {
 		return acc, nil
 	}
@@ -109,7 +106,7 @@ func CreateAccountForUserIfNotExist(user *supabase.User, selectedPlan string, su
 		UserID:             user.ID,
 		NotifyUpfront:      7,
 		NotifyDefaultEmail: user.Email,
-		Plan:               Plan(plan),
+		PlanID:             Plan(plan),
 		SubscriptionStatus: subscriptionStatus,
 	}
 	_, err = db.Bun.NewInsert().Model(&acc).Exec(context.Background())
@@ -118,4 +115,25 @@ func CreateAccountForUserIfNotExist(user *supabase.User, selectedPlan string, su
 	}
 	logger.Log("event", "new account signup", "id", acc.ID)
 	return &acc, nil
+}
+
+func PlanExistsByName(planName string) (bool, error) {
+	plan := new(Plans)
+	err := db.Bun.NewSelect().Model(plan).Where("name = ?", planName).Scan(context.Background())
+	if err != nil {
+		return false, fmt.Errorf("failed to check if plan exists by name: %w", err)
+	}
+
+	return true, nil
+}
+
+func GetAllPlans() ([]Plans, error) {
+	var plans []Plans
+
+	err := db.Bun.NewSelect().Model(&plans).Scan(context.Background())
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch all plans: %w", err)
+	}
+
+	return plans, nil
 }

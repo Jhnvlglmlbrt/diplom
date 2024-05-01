@@ -4,12 +4,12 @@
 <div class="container mx-auto mt-20 flex gap-10">
     {% include "partials/sidenav.html" %}
     <div class="flex w-full xl:px-14">
-        <form method="GET" action="/domains" class="w-full">
-            <h1 class="text-3xl font-bold mb-4">Мои домены</h1>
+        <form method="GET" action="/favorites" class="w-full">
+            <h1 class="text-3xl font-bold mb-4">Избранные домены</h1>
             <input type="text" name="q" placeholder="Поиск..." class="input input-bordered input-default flex-grow mt-5 mb-5" /> 
             <button type="submit" class="btn btn-secondary btn-sm ml-2">поиск</button> 
-            <a href="/domains" class="btn btn-neutral btn-outline btn-sm">Показать все</a>
-            <button type="button" class="btn btn-primary btn-sm" onclick="addFavoriteDomains()">Добавить в избранное</button>        
+            <a href="/favorites" class="btn btn-neutral btn-outline btn-sm">Показать все</a>
+            <button type="button" class="btn btn-primary btn-sm" onclick="deleteFavoriteDomains()">Удалить из избранного</button>        
             <div class="border-b border-gray-300 w-full"></div>
             <div class="mb-4 border-b border-b-base-300 pb-4 mt-5">
                 <div class="flex justify-between">
@@ -59,7 +59,7 @@
 
             {% if trackings && userHasTrackings %}
             <div class="flex w-full">
-                <div class="overflow-x-auto w-full">
+                <div class="overflow-x-auto w-full" id="domainsTable">
                     <table class="table">
                         <thead>
                             <tr>
@@ -110,29 +110,25 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-    function addFavoriteDomains() {
+    function deleteFavoriteDomains() {
         const selectedDomains = document.querySelectorAll('input[name="favorite_domains"]:checked');
         const domainIds = Array.from(selectedDomains).map(dom => dom.value);
 
         if (domainIds.length === 0) {
-            alert('Пожалуйста, выберите хотя бы один домен для добавления в избранное.');
+            alert('Пожалуйста, выберите хотя бы один домен для удаления из избранного.');
             return;
         }
 
-        axios.post('/favorites/add_favorite', { domain_ids: domainIds })
+        axios.post('/favorites/delete_favorite', { domain_ids: domainIds })
             .then(response => {
-                    alert('Домены успешно добавлены в избранное.');
-                    window.location.href = "/favorites";
+                alert('Домены успешно удалены из избранного.');
+                window.location.reload();
             })
             .catch(error => {
-                if (error.response.status === 409) {
-                    alert(error.response.data.error);
-                } else {
-                    console.error('Произошла ошибка при добавлении доменов в избранное:', error);
-                    alert('Произошла ошибка при добавлении доменов в избранное. Пожалуйста, попробуйте еще раз.');
-                }
-            });
-        }
+                    console.error('Произошла ошибка при удалении доменов из избранного:', error);
+                    alert('Произошла ошибка при удалении доменов из избранного. Пожалуйста, попробуйте еще раз.');
+                })
+            };
 </script>
 
 

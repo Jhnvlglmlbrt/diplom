@@ -1,0 +1,165 @@
+{% extends "partials/base.html" %}
+
+{% block content %}
+<div class="container mx-auto mt-20 flex gap-10">
+    {% include "admin/admin_sidenav.html" %}
+    <div class="flex w-full xl:px-2">
+        <form method="GET" action="/admin/users" class="w-full">
+            <h1 class="text-3xl font-bold mb-4">Все пользователи приложения</h1>
+            <div class="border-b border-gray-300 w-full"></div>
+            <div class="mb-4 border-b border-b-base-300 pb-4 mt-5">
+                <div class="flex justify-between">
+                    <div class="flex space-x-4 items-center">
+                        <p class="text-sm">
+                            Юзеров сайта - {{ users|length }} |
+                        </p>
+                        <span class="text-sm">фильтр по кол-ву пользователей </span>
+                        <select id="pageFilter" class="select select-bordered  w-18 select-sm" name="limit">
+                            {% for limit in filters.limits %}
+                            {% if limit == filters.selectedLimit %}
+                            <option selected>{{ limit }}</option>
+                            {% else %}
+                            <option>{{ limit}}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="flex space-x-4">
+                        <button type="button" class="btn btn-primary btn-sm" onclick="createUser()">Создать пользователя</button>
+                        <button type="button" class="btn btn-primary btn-sm" onclick="deleteUsers()">Удалить пользователя</button>        
+                        <a href="/users" class="btn btn-neutral btn-outline btn-sm">сбросить</a>
+                        <button type="submit" class="btn btn-secondary btn-sm">применить</button>
+                    </div>
+                </div>
+            </div>
+
+            {% if !users && usersExist %}
+            <p>Нет результатов для выбранного фильтра. <a class="text-blue-500 underline" href="/admin/users">Обновить фильтр.</a></p>
+            {% endif %}
+            {% if !usersExist %}
+            <div class="flex justify-center mt-20">
+                <div class="border border-base-300 p-8 rounded-lg text-center prose mx-auto">
+                    <p class="font-semibold">В данный момент в приложении у вас нет пользователей.</p>
+                    <p class="font-semibold"><a href="/">Перейти на главную страницу.</a></p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if users && usersExist %}
+            <div class="flex w-full">
+                <div class="overflow-x-auto w-full">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th class="text-center">User ID</th>
+                                <th class="text-center">Роль бд</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">Зашифрованный пароль</th>
+                                <th class="text-center">Дата подтверждения Email</th>
+                                <th class="text-center">Дата создания</th>
+                                <th class="text-center">Дата обновления</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                            <tr>
+                                <th class="text-center">
+                                    <input type="checkbox" class="checkbox checkbox-xs" name="users" value="{{ user.ID }}" />
+                                </th>
+                                <th class="text-center">{{ user.ID }}</th>
+                                <td class="text-center">{{ user.Aud }}</td>
+                                <td class="text-center">{{ user.Email }}</td>
+                                <td class="password-cell text-center">
+                                    <span class="password-hidden">{{ user.EncryptedPassword }}</span> 
+                                    <button class="toggle-button"></button>
+                                </td>                                
+                                <td class="text-center">{{ user.EmailConfirmedAt}}</td>
+                                <td class="text-center">{{ user.CreatedAt}}</td>
+                                <td class="text-center">{{ user.UpdatedAt}}</td>
+                                {% comment %} <td><a class="btn btn-neutral btn-xs" href='/domains/{{tracking.ID}}'>show</a></td> {% endcomment %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+        </form>
+        <div id="createUserModal" class="modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-box">
+                <h3 class="font-bold text-lg">Создать пользователя</h3>
+                <form id="createUserForm" method="POST" action="/admin/users/create">
+                  <div class="modal-body">
+                    <div class="form-control w-full">
+                      <label class="label" for="email">
+                        <span class="label-text">Email</span>
+                      </label>
+                      <input type="email" name="email" id="email" placeholder="user@example.com" class="input input-bordered w-full" required />
+                    </div>
+                    <div class="form-control w-full mt-4">
+                      <label class="label" for="password">
+                        <span class="label-text">Пароль</span>
+                      </label>
+                      <input type="password" name="password" id="password" value="securepassword" class="input input-bordered w-full" required />
+                    </div>
+                  </div>
+                  <div class="modal-action">
+                    <button type="submit" class="btn btn-primary">Создать</button>
+                    <button type="button" class="btn" onclick="closeModal()">Отмена</button>
+                  </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const passwordCells = document.querySelectorAll('td.password-cell');
+
+        passwordCells.forEach(cell => {
+            const passwordText = cell.textContent;
+            let visible = false;
+
+            cell.textContent = '*'.repeat(passwordText.length/4);
+
+            cell.addEventListener('click', function() {
+                cell.textContent = visible ? '*'.repeat(passwordText.length/4) : passwordText;
+                visible = !visible;
+            });
+        });
+    });
+
+    function deleteUsers() {
+        const selectedUsers = document.querySelectorAll('input[name="users"]:checked');
+        const usersIds = Array.from(selectedUsers).map(dom => dom.value);
+
+        if (usersIds.length === 0) {
+            alert('Пожалуйста, выберите хотя бы одного пользователя для удаления.');
+            return;
+        }
+
+        axios.post('/admin/users/delete', { users_ids: usersIds })
+            .then(response => {
+                    alert('Пользователь(и) успешно удален(ы).');
+                    window.location.href = "/admin/users";
+            })
+            .catch(error => {
+                    console.error('Произошла ошибка при удалении пользователя:', error);
+                    alert('Произошла ошибка при добавлении доменов в избранное. Пожалуйста, попробуйте еще раз.');
+            })
+    };
+
+    function createUser() {
+        document.getElementById('createUserModal').classList.add('is-active');
+    };
+    
+    function closeModal() {
+        document.getElementById('createUserModal').classList.remove('is-active');
+    };
+</script>
+
+{% endblock %}
+

@@ -5,13 +5,15 @@
 				<a href="/">SafeCert Monitor</a>
 			</div>
 			{% if !user %}
-			<div class="flex space-x-10 items-end font-semibold">
-				<a class="link link-hover" href="/pricing">Цены</a>
+			<div class="flex space-x-10 items-end font-semibold text-lg">
+				<a class="link link-hover" href="/pricing">Планы</a>
+				<a class="link link-hover" href="/about">О нас</a>
+				<a class="link link-hover" href="/check">Проверить сайт</a>
 			</div>
 			{% endif %}
 		</div>
 		<div>
-			{% if user %}
+			{% if user && user.Email != 'admin@admin.com' %}
 			<ul class="menu menu-horizontal px-1">
 				<li>
 					<details class="z-50">
@@ -19,6 +21,7 @@
 							{{ user.Email }}
 						</summary>
 						<ul class="p-2 bg-base-800">
+							<li><a href="/favorites">Избранное</a></li>
 							<li><a href="/domains">Домены</a></li>
 							<li><a href="/account">Аккаунт</a></li>
 							<li><a href="/signout">Выйти</a></li>
@@ -26,7 +29,30 @@
 					</details>
 				</li>
 			</ul>
-			{% else %}
+			{% endif %}
+
+			{% if user.Email == "admin@admin.com" %}
+			<div class="dark p-4 border border-blue-500 rounded-lg text-center">
+				<ul class="menu menu-horizontal px-1">
+					<li>
+						<details class="z-50">
+							<summary>
+								<a class="font-bold text text-lg">Панель администратора</a>
+							</summary>
+							<ul class="p-2 bg-base-800">
+								<li><a href="/admin/users">Пользователи</a></li>
+								<li><a href="/admin/accounts">Аккаунты</a></li>
+								<li><a href="/admin/domains">Домены</a></li>
+								<li><a href="/admin/plans">Планы</a></li>
+								<li><a href="/signout">Выйти</a></li>
+							</ul>
+						</details>
+					</li>
+				</ul>
+			</div>
+			{% endif %}
+
+			{% if !user %}
 			<a class="btn btn-primary mr-4" href="/signin">Войти</a>
 			<a class="btn  btn-secondary mr-4" href="/pricing">Зарегистрироваться</a>
 			{% endif %}

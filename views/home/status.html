@@ -1,0 +1,6 @@
+<div class="text-xl" style="display: flex; align-items: center;">
+    <p style="margin-right: 10px;">Статус домена - </p>
+    {% if status %}
+    <p>{{ badgeForStatus(status) }}</p>
+    {% endif %}
+</div>

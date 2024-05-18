@@ -21,8 +21,7 @@
 					<p class="text-error text-sm mb-4">{{ flash.fullnameError }}</p>
 					{% endif %}
 					<div class="mb-4">
-						<input class="input input-bordered input-default w-full" placeholder="password" type="password"
-							name="password" />
+						<input class="input input-bordered input-default w-full" placeholder="password" type="password" name="password" autocomplete="current-password" />
 					</div>
 					{% if flash.passwordError %}
 					<div class="mb-4 p-2 border border-error rounded-lg">

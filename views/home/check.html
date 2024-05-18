@@ -1,0 +1,17 @@
+{% extends "partials/base.html" %}
+
+{% block content %}
+<div class="container px-4 md:mx-auto flex flex-col items-center justify-center md:mt-16">
+    <h1 class="text-3xl font-bold mb-5">Проверьте статус любого домена бесплатно!</h1>
+    <div id="statusAlert" class="mt-10">
+        {% include "home/status.html" %}
+    </div>
+    <form id="domainForm" hx-post="/check_domain" hx-target="#statusAlert">
+        <div class="flex flex-col md:flex-row items-center justify-center mt-10">
+            <input name="domain" type="text" class="input input-bordered input-primary w-full md:w-auto mb-4 md:mb-0 md:mr-4" placeholder="Введите домен">
+            <button type="submit" class="btn btn-primary">Проверить статус домена</button>
+        </div>
+    </form>
+    <a href="/pricing" class="btn btn-primary mt-14 mb-20">Начать мониторинг</a>
+</div>
+{% endblock %}

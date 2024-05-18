@@ -1,0 +1,146 @@
+{% extends "partials/base.html" %}
+
+{% block content %}
+<div class="container mx-auto mt-20 flex gap-10">
+    {% include "admin/admin_sidenav.html" %}
+    <div class="flex w-full xl:px-2">
+        <form method="GET" action="/admin/accounts" class="w-full">
+            <h1 class="text-3xl font-bold mb-4">Все аккаунты пользователей приложения</h1>
+            <div class="border-b border-gray-300 w-full"></div>
+            <div class="mb-4 border-b border-b-base-300 pb-4 mt-5">
+                <div class="flex justify-between">
+                    <div class="flex space-x-4 items-center">
+                        <p class="text-sm">
+                            Всего аккунтов - {{ accounts|length }} |
+                        </p>
+                        <span class="text-sm">фильтр по кол-ву аккаунтов </span>
+                        <select id="pageFilter" class="select select-bordered  w-18 select-sm" name="limit">
+                            {% for limit in filters.limits %}
+                            {% if limit == filters.selectedLimit %}
+                            <option selected>{{ limit }}</option>
+                            {% else %}
+                            <option>{{ limit}}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="flex space-x-4">
+                        <button type="button" class="btn btn-success btn-sm" onclick="saveAccountChanges()">Сохранить изменения</button>
+                        <button type="button" class="btn btn-primary btn-sm" onclick="deleteAccounts()">Удалить аккаунт</button>        
+                        <a href="/admin/accounts" class="btn btn-neutral btn-outline btn-sm">сбросить</a>
+                        <button type="submit" class="btn btn-secondary btn-sm">применить</button>
+                    </div>
+                </div>
+            </div>
+
+            {% if !accounts && accountsExist %}
+            <p>Нет результатов для выбранного фильтра. <a class="text-blue-500 underline" href="/admin/accounts">Обновить фильтр.</a></p>
+            {% endif %}
+            {% if !accountsExist %}
+            <div class="flex justify-center mt-20">
+                <div class="border border-base-300 p-8 rounded-lg text-center prose mx-auto">
+                    <p class="font-semibold">В данный момент в приложении у вас нет аккаунтов у пользователей.</p>
+                    <p class="font-semibold"><a href="/">Перейти на главную страницу.</a></p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if accounts && accountsExist %}
+            <div class="flex w-full">
+                <div class="overflow-x-auto w-full">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th class="text-center">User ID</th>
+                                <th class="text-center">Кол-во дней для оповещения</th>
+                                <th class="text-center">Email для оповещения</th>
+                                <th class="text-center">Статус подписки</th>
+                                <th class="text-center">План</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for account in accounts %}
+                            <tr>
+                                <th>
+                                    <input type="checkbox" class="checkbox checkbox-xs" name="accounts" value="{{ account.ID }}" />
+                                </th>
+                                <th class="text-center">{{ account.UserID }}</th>
+                                <td class="text-center"><input type="text" class="input input-bordered input-sm" name="notifyUpfront" value="{{ account.NotifyUpfront }}"></td>
+                                <td class="text-center"><input type="text" class="input input-bordered input-sm" name="notifyDefaultEmail" value="{{ account.NotifyDefaultEmail }}"></td>                              
+                                <td class="text-center"><input type="text" class="input input-bordered input-sm" name="planID" value="{{ account.PlanID }}"></td>
+                                <td class="text-center"><input type="text" class="input input-bordered input-sm" name="subscriptionStatus" value="{{ account.SubscriptionStatus }}"></td>
+                                {% comment %} <td><a class="btn btn-neutral btn-xs" href='/domains/{{tracking.ID}}'>show</a></td> {% endcomment %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    function saveAccountChanges() {
+        const selectedAccounts = document.querySelectorAll('input[name="accounts"]:checked');
+        const accountsIds = Array.from(selectedAccounts).map(dom => dom.value);
+        
+        if (accountsIds.length === 0) {
+            alert('Пожалуйста, выберите хотя бы один аккаунт для изменения.');
+            return;
+        }
+    
+        const requestData = {
+            accounts_ids: accountsIds,
+            notify_upfront: [],
+            notify_default_email: [],
+            plan_id: [],
+            subscription_status: []
+        };
+    
+        selectedAccounts.forEach(account => {
+            const row = account.closest('tr');
+            requestData.notify_upfront.push(row.querySelector('input[name="notifyUpfront"]').value);
+            requestData.notify_default_email.push(row.querySelector('input[name="notifyDefaultEmail"]').value);
+            requestData.plan_id.push(row.querySelector('input[name="planID"]').value);
+            requestData.subscription_status.push(row.querySelector('input[name="subscriptionStatus"]').value);
+        });
+    
+        axios.post('/admin/accounts/update', requestData)
+            .then(response => {
+                alert('Изменения успешно сохранены.');
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error('Произошла ошибка при сохранении изменений:', error);
+                alert('Произошла ошибка при сохранении изменений. Пожалуйста, попробуйте еще раз.');
+            });
+    }
+    
+    
+    function deleteAccounts() {
+        const selectedAccounts = document.querySelectorAll('input[name="accounts"]:checked');
+        const accountsIds = Array.from(selectedAccounts).map(dom => dom.value);
+
+        if (accountsIds.length === 0) {
+            alert('Пожалуйста, выберите хотя бы один аккаунт для удаления.');
+            return;
+        }
+
+        axios.post('/admin/accounts/delete', { accounts_ids: accountsIds })
+            .then(response => {
+                    alert('Пользователь(и) успешно удален(ы).');
+                    window.location.href = "/admin/accounts";
+            })
+            .catch(error => {
+                console.error('Произошла ошибка при добавлении доменов в избранное:', error);
+                alert('Произошла ошибка при добавлении доменов в избранное. Пожалуйста, попробуйте еще раз.');
+            })
+    };
+</script>
+
+{% endblock %}
+

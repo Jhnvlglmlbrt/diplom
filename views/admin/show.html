@@ -1,0 +1,33 @@
+{% extends "partials/base.html" %}
+
+{% block content %}
+<div class="container mx-auto mt-20 flex gap-10">
+    {% include "admin/admin_sidenav.html" %}
+    <div class="flex w-full xl:px-14 mb-10">
+
+        {% if tracking.Status == "offline" %}
+            {% include "admin/domains/show-domain-offline.html" %}
+        {% endif %}
+
+        {% if tracking.Status == "unresponsive" %}
+            {% include "admin/domains/show-domain-unresponsive.html" %}
+        {% endif %}
+
+        {% if tracking.Status == "invalid" %}
+            {% include "admin/domains/show-domain-invalid.html" %}
+        {% endif %}
+
+        {% if tracking.Status == "healthy" || tracking.Status == "expires" %}
+            {% include "admin/domains/show-domain-healthy.html" %}
+        {% endif %}
+
+        <div class="hidden">
+            <div class="badge badge-success"></div>
+            <div class="badge badge-warning"></div>
+            <div class="badge badge-error"></div>
+            <div class="badge badge-accent"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

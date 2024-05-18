@@ -9,7 +9,6 @@
             <input type="text" name="q" placeholder="Поиск..." class="input input-bordered input-default flex-grow mt-5 mb-5" /> 
             <button type="submit" class="btn btn-secondary btn-sm ml-2">поиск</button> 
             <a href="/domains" class="btn btn-neutral btn-outline btn-sm">Показать все</a>
-            <button type="button" class="btn btn-primary btn-sm" onclick="addFavoriteDomains()">Добавить в избранное</button>        
             <div class="border-b border-gray-300 w-full"></div>
             <div class="mb-4 border-b border-b-base-300 pb-4 mt-5">
                 <div class="flex justify-between">
@@ -39,8 +38,11 @@
                         </select>
                     </div>
                     <div class="flex space-x-4">
+                        <button type="button" class="btn btn-primary btn-sm" onclick="deleteDomains()">Удалить</button>        
+                        <button type="button" class="btn btn-primary btn-sm" onclick="addFavoriteDomains()">Добавить в избранное</button>        
                         <a href="/domains" class="btn btn-neutral btn-outline btn-sm">сбросить</a>
                         <button type="submit" class="btn btn-secondary btn-sm">применить</button>
+                        
                     </div>
                 </div>
             </div>
@@ -76,14 +78,14 @@
                             {% for tracking in trackings %}
                             <tr>
                                 <th>
-                                    <input type="checkbox" class="checkbox checkbox-xs" name="favorite_domains" value="{{ tracking.ID }}" />
+                                    <input type="checkbox" class="checkbox checkbox-xs" name="domains" value="{{ tracking.ID }}" />
                                 </th>
                                 <th>{{ tracking.DomainName }}</th>
                                 <td>{{ tracking.Issuer }}</td>
                                 <td>{{ formatTime(tracking.Expires) }}</td>
                                 <td>{{ daysLeft(tracking.Expires) }}</td>
                                 <td>{{badgeForStatus(tracking.Status)}}</td>
-                                <td><a class="btn btn-neutral btn-xs" href='/domains/{{tracking.ID}}'>show</a></td>
+                                <td><a class="btn btn-neutral btn-xs" href='/domains/{{tracking.ID}}'>смотреть</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -132,7 +134,27 @@
                     alert('Произошла ошибка при добавлении доменов в избранное. Пожалуйста, попробуйте еще раз.');
                 }
             });
+    }
+
+    function deleteDomains() {
+        const selectedDomains = document.querySelectorAll('input[name="domains"]:checked');
+        const domainIds = Array.from(selectedDomains).map(dom => dom.value);
+
+        if (domainIds.length === 0) {
+            alert('Пожалуйста, выберите хотя бы один домен для удаления.');
+            return;
         }
+
+        axios.post('/domains/delete', { domain_ids: domainIds })
+            .then(response => {
+                alert('Домены успешно удалены.');
+                window.location.reload();
+            })
+            .catch(error => {
+                    console.error('Произошла ошибка при удалении доменов:', error);
+                    alert('Произошла ошибка при удалении доменов. Пожалуйста, попробуйте еще раз.');
+                })
+    };
 </script>
 
 

@@ -1,0 +1,29 @@
+{% extends "partials/base.html" %}
+{% block content %}
+<div class="hero mt-8 md:mt-[calc(10vh)]">
+    <div class="hero-content text-center md:text-left">
+        <div class="md:flex md:justify-between">
+            <div class="w-full md:w-7/12 md:pr-6">
+                <h3 class="text-xl md:text-4xl leading-tight md:leading-tight xl:leading-tight font-bold">
+                    О нашем сервисе
+                </h3>
+                <div class="border-b border-gray-300 w-full"></div>
+                <p class="mt-8 text-lg md:text-4lg leading-relaxed">
+                    SafeCert Monitor - это современное веб-приложение, разработанное для обеспечения надежного мониторинга SSL-сертификатов. Мы стремимся помочь компаниям избежать проблем, связанных с просроченными сертификатами, предоставляя своевременные уведомления и надежные инструменты для отслеживания сроков действия сертификатов.
+                </p>
+                <p class="mt-4 text-lg md:text-4lg leading-relaxed">
+                    Наша цель - сделать процесс мониторинга SSL-сертификатов максимально простым и эффективным, чтобы вы могли сосредоточиться на своем бизнесе, не беспокоясь о безопасности вашего веб-пространства.
+                </p>
+            </div>
+            <div class="w-full md:w-7/12 md:pl-6"> 
+                <div class="rounded-xl p-1 md:p-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+                    <img class="rounded-lg shadow-lg w-full h-auto" src="/static/assets/certs.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container px-4 md:mx-auto flex flex-col items-center justify-center mt-6 md:mt-16">
+    <a href="/pricing" class="btn btn-primary my-20">Начать мониторинг</a>
+</div>
+{% endblock %}

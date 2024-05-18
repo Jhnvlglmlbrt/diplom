@@ -1,0 +1,183 @@
+{% extends "partials/base.html" %}
+
+{% block content %}
+<div class="container mx-auto mt-20 flex gap-10">
+    {% include "admin/admin_sidenav.html" %}
+    <div class="flex w-full xl:px-2">
+        <form method="GET" action="/admin/plans" class="w-full">
+            <h1 class="text-3xl font-bold mb-4">Все планы</h1>
+            <div class="border-b border-gray-300 w-full"></div>
+            <div class="mb-4 border-b border-b-base-300 pb-4 mt-5">
+                <div class="flex justify-between">
+                    <div class="flex space-x-4 items-center">
+                        <p class="text-sm">
+                            Всего планов - {{ plans|length }} |
+                        </p>
+                        <span class="text-sm">фильтр по кол-ву планов </span>
+                        <select id="pageFilter" class="select select-bordered  w-18 select-sm" name="limit">
+                            {% for limit in filters.limits %}
+                            {% if limit == filters.selectedLimit %}
+                            <option selected>{{ limit }}</option>
+                            {% else %}
+                            <option>{{ limit}}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="flex space-x-4">
+                        <button type="button" class="btn btn-success btn-sm" onclick="savePlanChanges()">Сохранить изменения</button>
+                        <button type="button" class="btn btn-primary btn-sm" onclick="createPlan()">Создать план</button>
+                        <button type="button" class="btn btn-primary btn-sm" onclick="deletePlans()">Удалить план</button>        
+                        <a href="/admin/plans" class="btn btn-neutral btn-outline btn-sm">сбросить</a>
+                        <button type="submit" class="btn btn-secondary btn-sm">применить</button>
+                    </div>
+                </div>
+            </div>
+
+            {% if !plans && plansExist %}
+            <p>Нет результатов для выбранного фильтра. <a class="text-blue-500 underline" href="/admin/plans">Обновить фильтр.</a></p>
+            {% endif %}
+            {% if !plansExist %}
+            <div class="flex justify-center mt-20">
+                <div class="border border-base-300 p-8 rounded-lg text-center prose mx-auto">
+                    <p class="font-semibold">В данный момент в приложении у вас нет планов.</p>
+                    <p class="font-semibold"><a href="/">Перейти на главную страницу.</a></p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if plans && plansExist %}
+            <div class="flex w-full">
+                <div class="overflow-x-auto w-full">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                {% comment %} <th class="text-center">Plan ID</th> {% endcomment %}
+                                <th class="text-center">Название плана</th>
+                                <th class="text-center">Описание</th>
+                                <th class="text-center">Функции</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for plan in plans %}
+                            <tr>
+                                <th>
+                                    <input type="checkbox" class="checkbox checkbox-xs" name="plans" value="{{ plan.ID }}" />
+                                </th>
+                                {% comment %} <th class="text-center">{{ plan.ID }}</th> {% endcomment %}
+                                <td class="text-center"><input type="text" class="input input-bordered input-sm" name="name" value="{{ plan.Name }}"></td>
+                                <td class="text-center"><input type="text" class="input input-bordered input-sm" name="description" value="{{ plan.Description }}" style="width: 300px;"></td>                              
+                                <td class="text-center"><input type="text" class="input input-bordered input-sm" name="features" value="{{ plan.Features | join: ', ' }}" style="width: 300px;"></td>
+                                {% comment %} <td><a class="btn btn-neutral btn-xs" href='/domains/{{tracking.ID}}'>show</a></td> {% endcomment %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+        </form>
+        <div id="createPlanModal" class="modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-box">
+                <h3 class="font-bold text-lg">Создать план</h3>
+                <form id="createPlanForm" method="POST" action="/admin/plans/create">
+                  <div class="modal-body">
+                    <div class="form-control w-full">
+                      <label class="label" for="name">
+                        <span class="label-text">Название</span>
+                      </label>
+                      <input type="text" name="name" id="name" class="input input-bordered w-full" required />
+                    </div>
+                    <div class="form-control w-full mt-4">
+                      <label class="label" for="description">
+                        <span class="label-text">Описание</span>
+                      </label>
+                      <input type="text" name="description" id="description" class="input input-bordered w-full" required />
+                    </div>
+                    <div class="form-control w-full mt-4">
+                        <label class="label" for="description">
+                          <span class="label-text">Особенности</span>
+                        </label>
+                        <input type="text" name="features" id="features" class="input input-bordered w-full" required />
+                      </div>
+                  </div>
+                  <div class="modal-action">
+                    <button type="submit" class="btn btn-primary">Создать</button>
+                    <button type="button" class="btn" onclick="closeModal()">Отмена</button>
+                  </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+
+    function savePlanChanges() {
+        const selectedPlans = document.querySelectorAll('input[name="plans"]:checked');
+        const plansIds = Array.from(selectedPlans).map(dom => dom.value);
+        
+        if (plansIds.length === 0) {
+            alert('Пожалуйста, выберите хотя бы один аккаунт для изменения.');
+            return;
+        }
+    
+        const requestData = {
+            plans_ids: plansIds,
+            name: [],
+            description: [],
+            features: []
+        };
+    
+        selectedPlans.forEach(account => {
+            const row = account.closest('tr');
+            requestData.name.push(row.querySelector('input[name="name"]').value);
+            requestData.description.push(row.querySelector('input[name="description"]').value);
+            requestData.features.push(row.querySelector('input[name="features"]').value);
+        });
+    
+        axios.post('/admin/plans/update', requestData)
+            .then(response => {
+                alert('Изменения успешно сохранены.');
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error('Произошла ошибка при сохранении изменений:', error);
+                alert('Произошла ошибка при сохранении изменений. Пожалуйста, попробуйте еще раз.');
+            });
+    }
+    
+    
+    function deletePlans() {
+        const selectedPlans = document.querySelectorAll('input[name="plans"]:checked');
+        const plansIds = Array.from(selectedPlans).map(dom => dom.value);
+
+        if (plansIds.length === 0) {
+            alert('Пожалуйста, выберите хотя бы один план для удаления.');
+            return;
+        }
+
+        axios.post('/admin/plans/delete', { plans_ids: plansIds })
+            .then(response => {
+                    alert('План(ы) успешно удален(ы).');
+                    window.location.href = "/admin/plans";
+            })
+            .catch(error => {
+                console.error('Произошла ошибка при удалении планов:', error);
+                alert('Произошла ошибка при удалении плана. Пожалуйста, попробуйте еще раз.');
+            })
+    };
+
+    function createPlan() {
+        document.getElementById('createPlanModal').classList.add('is-active');
+    };
+    
+    function closeModal() {
+        document.getElementById('createPlanModal').classList.remove('is-active');
+    };
+</script>
+
+{% endblock %}
+

@@ -1,0 +1,31 @@
+<div clas="w-full">
+	<div class="mb-6">
+		<h1 class="text-3xl font-bold mb-4">{{ tracking.DomainName }}</h1>
+		<h1 class="text-xl font-bold mb-4">Email пользователя - {{ userEmail }} </h1>
+		<p class="text-sm font-bold mb-5 mt-5"> IP - {{ tracking.ServerIP }} </p>
+		<p>Домен не ответил в течении 5 секунд</p>
+	</div>
+	{% include "partials/domains/show-actions.html" %}
+	<div class="mt-6 border-t border-base-200">
+		<dl class="divide-y divide-base-200">
+			<div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+				<dt class="text-sm font-medium leading-6">Статус</dt>
+				<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">
+					{{ badgeForStatus(tracking.Status) }}
+				</dd>
+			</div>
+			<div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+				<dt class="text-sm font-medium leading-6">Ошибка</dt>
+				<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">
+					{{ tracking.Error }}
+				</dd>
+			</div>
+			<div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+				<dt class="text-sm font-medium leading-6">Сертификат</dt>
+				<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">
+					<button class="btn btn-neutral btn-xs">смотреть</button>
+				</dd>
+			</div>
+		</dl>
+	</div>
+</div>

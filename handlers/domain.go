@@ -19,7 +19,6 @@ import (
 	"github.com/Jhnvlglmlbrt/monitoring-certs/pkg/ssl"
 	"github.com/Jhnvlglmlbrt/monitoring-certs/settings"
 	"github.com/Jhnvlglmlbrt/monitoring-certs/util"
-	"github.com/davecgh/go-spew/spew"
 	"github.com/gofiber/fiber/v2"
 	"github.com/sujit-baniya/flash"
 )
@@ -43,6 +42,10 @@ var statusFilters = []string{
 }
 
 func HandleDomainList(c *fiber.Ctx) error {
+	var (
+		domainTrackings []data.DomainTracking
+	)
+
 	user := getAuthenticatedUser(c)
 	count, err := data.CountUserDomainTrackings(user.ID)
 	if err != nil {
@@ -65,19 +68,29 @@ func HandleDomainList(c *fiber.Ctx) error {
 		query["status"] = filter.Status
 	}
 
-	domainTrackings, err := data.GetDomainTrackings(query, filter.Limit, filter.Page, "id", true)
+	// чтоьы показывать кол-во доменов по плану подписки
+	account, err := data.GetUserAccount(user.ID)
 	if err != nil {
 		return err
 	}
-	// spew.Dump(domainTrackings)
 
+	maxTrackings := settings.Account[account.PlanID].MaxTrackings
+
+	if count > maxTrackings {
+		filter.Limit = maxTrackings
+		count = maxTrackings
+	}
+
+	domainTrackings, err = data.GetDomainTrackings(query, filter.Limit, filter.Page, "id", true)
+	if err != nil {
+		return err
+	}
+
+	// вывод доменов, если есть поиск
 	if searchQuery := c.Query("q"); searchQuery != "" {
 		searchQuery = strings.TrimSpace(searchQuery)
-		query := fiber.Map{
-			"domain_name": searchQuery,
-		}
+		query["domain_name"] = searchQuery
 		domainTrackings, err = data.GetDomainTrackings(query, filter.Limit, filter.Page, "id", true)
-		// spew.Dump(domainTrackings)
 		if err != nil {
 			return err
 		}
@@ -97,12 +110,103 @@ func HandleDomainNew(c *fiber.Ctx) error {
 	return c.Render("domains/new", fiber.Map{})
 }
 
+func HandleDomainsDelete(c *fiber.Ctx) error {
+	user := getAuthenticatedUser(c)
+
+	var req struct {
+		DomainIDs []string `json:"domain_ids"`
+	}
+	if err := c.BodyParser(&req); err != nil {
+		return err
+	}
+
+	for _, domainID := range req.DomainIDs {
+		domainIDInt, err := strconv.ParseInt(domainID, 10, 64)
+		if err != nil {
+			return err
+		}
+
+		err = data.RemoveDomain(user.ID, domainIDInt)
+		if err != nil {
+			continue
+		}
+		logger.Log("msg", "domain deleted", domainIDInt)
+
+	}
+
+	return c.Redirect("/domains")
+}
+
+func HandleAdminDomainsDelete(c *fiber.Ctx) error {
+	var req struct {
+		DomainIDs []string `json:"domain_ids"`
+	}
+	if err := c.BodyParser(&req); err != nil {
+		return err
+	}
+
+	for _, domainID := range req.DomainIDs {
+
+		query := fiber.Map{
+			"id": domainID,
+		}
+
+		domainIDInt, err := strconv.ParseInt(domainID, 10, 64)
+		if err != nil {
+			return err
+		}
+
+		tracking, err := data.GetDomainTracking(query)
+		if err != nil {
+			return err
+		}
+
+		err = data.RemoveDomain(tracking.UserID, domainIDInt)
+		if err != nil {
+			continue
+		}
+		logger.Log("msg", "domain deleted", domainIDInt)
+
+	}
+
+	return c.Redirect("/domains")
+}
+
 func HandleDomainDelete(c *fiber.Ctx) error {
 	user := getAuthenticatedUser(c)
+	domainID := c.Params("id")
+
 	query := fiber.Map{
 		"user_id": user.ID,
 		"id":      c.Params("id"),
 	}
+
+	if err := data.DeleteFavorite(fiber.Map{"user_id": user.ID, "domain_id": domainID}); err != nil {
+		return err
+	}
+
+	if err := data.DeleteDomainTracking(query); err != nil {
+		return err
+	}
+	return c.Redirect("/domains")
+}
+
+func HandleAdminDomainDelete(c *fiber.Ctx) error {
+	domainID := c.Params("id")
+
+	query := fiber.Map{
+		"id": c.Params("id"),
+	}
+
+	tracking, err := data.GetDomainTracking(query)
+	if err != nil {
+		return err
+	}
+
+	if err := data.DeleteFavorite(fiber.Map{"user_id": tracking.UserID, "domain_id": domainID}); err != nil {
+		return err
+	}
+
 	if err := data.DeleteDomainTracking(query); err != nil {
 		return err
 	}
@@ -115,6 +219,18 @@ func HandleDomainShowRaw(c *fiber.Ctx) error {
 	query := fiber.Map{
 		"user_id": user.ID,
 		"id":      trackingID,
+	}
+	tracking, err := data.GetDomainTracking(query)
+	if err != nil {
+		return err
+	}
+	return c.Send([]byte(tracking.EncodedPEM))
+}
+
+func HandleAdminDomainShowRaw(c *fiber.Ctx) error {
+	trackingID := c.Params("id")
+	query := fiber.Map{
+		"id": trackingID,
 	}
 	tracking, err := data.GetDomainTracking(query)
 	if err != nil {
@@ -137,7 +253,28 @@ func HandleDomainShow(c *fiber.Ctx) error {
 	context := fiber.Map{
 		"tracking": tracking,
 	}
-	return c.Render("domains/show", context)
+	return c.Render("admin/show", context)
+}
+
+func HandleAdminDomainShow(c *fiber.Ctx) error {
+	trackingID := c.Params("id")
+	query := fiber.Map{
+		"id": trackingID,
+	}
+	tracking, err := data.GetDomainTracking(query)
+	if err != nil {
+		return err
+	}
+	user, err := GetEmailForUserID(tracking.UserID)
+	if err != nil {
+		return err
+	}
+
+	context := fiber.Map{
+		"userEmail": user,
+		"tracking":  tracking,
+	}
+	return c.Render("admin/show", context)
 }
 
 // Обработчик для отправки ручного уведомления
@@ -212,7 +349,6 @@ func HandleDomainCreate(c *fiber.Ctx) error {
 	}
 	if account.PlanID > data.PlanStarter && account.SubscriptionStatus != "active" {
 		logger.Log("error", "subscription status not active", "status", account.SubscriptionStatus)
-		// return AppError(fmt.Errorf("subscription status not active"))
 		return flash.WithData(c, flashData).Redirect("/domains/new")
 	}
 	if len(domains)+count > maxTrackings {
@@ -337,7 +473,7 @@ func HandleFavoritesList(c *fiber.Ctx) error {
 		return err
 	}
 
-	spew.Dump(domainTrackings)
+	// spew.Dump(domainTrackings)
 
 	if searchQuery := c.Query("q"); searchQuery != "" {
 		searchQuery = strings.TrimSpace(searchQuery)
@@ -409,8 +545,6 @@ func HandleAddFavorite(c *fiber.Ctx) error {
 }
 
 func HandleRemoveFavorite(c *fiber.Ctx) error {
-	user := getAuthenticatedUser(c)
-
 	var req struct {
 		DomainIDs []string `json:"domain_ids"`
 	}
@@ -424,12 +558,129 @@ func HandleRemoveFavorite(c *fiber.Ctx) error {
 			return err
 		}
 
-		err = data.RemoveFavoriteDomain(user.ID, domainIDInt)
+		err = data.RemoveFavoriteDomain(domainIDInt)
 		if err != nil {
 			continue
 		}
+		logger.Log("msg", "favorite domain deleted", domainIDInt)
 
 	}
 
 	return c.Redirect("/favorites")
+}
+
+func HandleCheckDomainStatus(c *fiber.Ctx) error {
+	domain := c.FormValue("domain")
+
+	trackingInfo, err := ssl.PollDomain(context.Background(), domain)
+	if err != nil {
+		return err
+	}
+
+	return c.Render("home/status", fiber.Map{"status": trackingInfo.Status})
+}
+
+func HandleAdminDomainList(c *fiber.Ctx) error {
+	var (
+		domainTrackings []data.DomainTracking
+		aud             = "authenticated"
+	)
+
+	countUsers, err := data.CountUsers(aud)
+	if err != nil {
+		return err
+	}
+
+	count, err := data.CountDomainTrackings()
+	if err != nil {
+		return err
+	}
+
+	if count*countUsers == 0 {
+		return c.Render("admin/domains", fiber.Map{"noTrackings": false})
+	}
+
+	filter, err := buildTrackingFilter(c)
+	if err != nil {
+		return err
+	}
+
+	filterContext := buildFilterContext(filter)
+	query := fiber.Map{}
+	if filter.Status != "all" {
+		query["status"] = filter.Status
+	}
+
+	domainTrackings, err = data.GetAdminDomainTrackings(query, filter.Limit, filter.Page, "id", true)
+	if err != nil {
+		return err
+	}
+
+	params := fiber.Map{
+		"aud": aud,
+	}
+
+	users, err := data.GetUsers(params, filter.Limit, filter.Page, "id", true)
+	if err != nil {
+		return err
+	}
+
+	// вывод доменов, если есть поиск
+	if searchQuery := c.Query("q"); searchQuery != "" {
+		searchQuery = strings.TrimSpace(searchQuery)
+		query["domain_name"] = searchQuery
+		domainTrackings, err = data.GetAdminDomainTrackings(query, filter.Limit, filter.Page, "id", true)
+		if err != nil {
+			return err
+		}
+	}
+
+	data := fiber.Map{
+		"users":       users,
+		"trackings":   domainTrackings,
+		"filters":     filterContext,
+		"noTrackings": true,
+		"pages":       buildPages(count, filter.Limit),
+		"queryParams": filter.encode(),
+	}
+	return c.Render("admin/domains", data)
+}
+
+func HandleAdminDomainCreate(c *fiber.Ctx) error {
+	flashData := fiber.Map{}
+	userDomainsInput := c.FormValue("domains")
+	userDomainsInput = strings.ReplaceAll(userDomainsInput, " ", "")
+
+	if len(userDomainsInput) == 0 {
+		flashData["domainsError"] = "Please provide at least 1 valid domain name"
+		return flash.WithData(c, flashData).Redirect("/admin/new")
+	}
+	domains := strings.Split(userDomainsInput, ",")
+	if len(domains) == 0 {
+		flashData["domainsError"] = "Invalid domain list input. Make sure to use a comma seperated list (domain1.com, domain2.com, ..)"
+		flashData["domains"] = userDomainsInput
+		return flash.WithData(c, flashData).Redirect("/admin/new")
+	}
+	for _, domain := range domains {
+		if !util.IsValidDomainName(domain) {
+			flashData["domainsError"] = fmt.Sprintf("%s is not a valid domain", domain)
+			flashData["domains"] = userDomainsInput
+			return flash.WithData(c, flashData).Redirect("/admin/new")
+		}
+	}
+
+	user := getAuthenticatedUser(c)
+
+	if err := createAllDomainTrackings(user.ID, domains); err != nil {
+		return err
+	}
+	return c.Redirect("/admin/domains")
+}
+
+func GetEmailForUserID(userID string) (string, error) {
+	user, err := data.GetUser(userID)
+	if err != nil {
+		return "", err
+	}
+	return user.Email, nil
 }

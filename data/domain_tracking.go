@@ -36,11 +36,21 @@ type DomainTrackingInfo struct {
 }
 
 type DomainTracking struct {
-	ID         int64 `bun:"id,pk,autoincrement"`
-	UserID     string
+	ID         int64  `bun:"id,pk,autoincrement"`
+	UserID     string `bun:"user_id"`
 	DomainName string
 
 	DomainTrackingInfo
+}
+
+type Users struct {
+	ID                string    `bun:"id,pk,autoincrement"`
+	Aud               string    `bun:"aud"`
+	Email             string    `bun:"email"`
+	EncryptedPassword string    `bun:"encrypted_password"`
+	EmailConfirmedAt  time.Time `bun:"email_confirmed_at"`
+	CreatedAt         time.Time `bun:"created_at"`
+	UpdatedAt         time.Time `bun:"updated_at"`
 }
 
 func CountUserDomainTrackings(userID string) (int, error) {
@@ -52,12 +62,54 @@ func CountUserDomainTrackings(userID string) (int, error) {
 
 func CountUserFavorites(userID string) (int, error) {
 	return db.Bun.NewSelect().
-		Model(&DomainTracking{}).
+		Model(&Favorites{}).
 		Where("user_id = ?", userID).
 		Count(context.Background())
 }
 
+func CountDomainTrackings() (int, error) {
+	return db.Bun.NewSelect().
+		Model(&DomainTracking{}).
+		Count(context.Background())
+}
+
+// func CountUsers(aud string) (int, error) {
+// 	return db.Bun.NewSelect().
+// 		Model(&Users{}).
+// 		Where("aud = ?", aud).
+// 		Count(context.Background())
+// }
+
+func CountUsers(aud string) (int, error) {
+	return db.Bun.NewSelect().
+		Table("auth.users").
+		Where("aud = ?", aud).
+		Count(context.Background()) // Use Value to get the count
+}
+
 func GetDomainTrackings(filter fiber.Map, limit int, page int, sortField string, ascending bool) ([]DomainTracking, error) {
+	if limit == 0 {
+		limit = DefaultLimit
+	}
+	var trackings []DomainTracking
+	builder := db.Bun.NewSelect().Model(&trackings).Limit(limit)
+	for k, v := range filter {
+		if v != "" {
+			builder.Where("? = ?", bun.Ident(k), v)
+		}
+	}
+	offset := (page - 1) * limit
+	builder.Offset(offset)
+	if ascending {
+		builder.OrderExpr("? ASC", bun.Ident(sortField))
+	} else {
+		builder.OrderExpr("? DESC", bun.Ident(sortField))
+	}
+	err := builder.Scan(context.Background())
+	return trackings, err
+}
+
+func GetAdminDomainTrackings(filter fiber.Map, limit int, page int, sortField string, ascending bool) ([]DomainTracking, error) {
 	if limit == 0 {
 		limit = DefaultLimit
 	}
@@ -92,6 +144,13 @@ func GetDomainTracking(query fiber.Map) (*DomainTracking, error) {
 
 func DeleteDomainTracking(query fiber.Map) error {
 	builder := db.Bun.NewDelete().Model(&DomainTracking{}).QueryBuilder()
+	builder = db.WhereMap(builder, query)
+	_, err := builder.Unwrap().(*bun.DeleteQuery).Exec(context.Background())
+	return err
+}
+
+func DeleteFavorite(query fiber.Map) error {
+	builder := db.Bun.NewDelete().Model(&Favorites{}).QueryBuilder()
 	builder = db.WhereMap(builder, query)
 	_, err := builder.Unwrap().(*bun.DeleteQuery).Exec(context.Background())
 	return err
@@ -261,11 +320,115 @@ func GetFavoriteDomainTrackings(userID string, filter fiber.Map, limit int, page
 	return domainTrackings, err
 }
 
-func RemoveFavoriteDomain(userID string, domainID int64) error {
+func RemoveFavoriteDomain(domainID int64) error {
 	_, err := db.Bun.NewDelete().
 		Model(&Favorites{}).
-		Where("user_id = ?", userID).
 		Where("domain_id = ?", domainID).
 		Exec(context.Background())
 	return err
+}
+
+func RemoveDomain(userID string, domainID int64) error {
+	_, err := db.Bun.NewDelete().
+		Model(&DomainTracking{}).
+		Where("user_id = ?", userID).
+		Where("id = ?", domainID).
+		Exec(context.Background())
+	return err
+}
+
+// func GetUsers(filter fiber.Map, limit int, page int, sortField string, ascending bool) ([]Users, error) {
+// 	if limit == 0 {
+// 		limit = DefaultLimit
+// 	}
+
+// 	var users []Users
+
+// 	builder := db.Bun.NewSelect().Model(&users).Limit(limit)
+// 	for k, v := range filter {
+// 		if v != "" {
+// 			builder.Where("? = ?", bun.Ident(k), v)
+// 		}
+// 	}
+// 	offset := (page - 1) * limit
+// 	builder.Offset(offset)
+// 	if ascending {
+// 		builder.OrderExpr("? ASC", bun.Ident(sortField))
+// 	} else {
+// 		builder.OrderExpr("? DESC", bun.Ident(sortField))
+// 	}
+// 	err := builder.Scan(context.Background())
+// 	return users, err
+// }
+
+func GetUsers(filter fiber.Map, limit int, page int, sortField string, ascending bool) ([]Users, error) {
+	if limit == 0 {
+		limit = DefaultLimit
+	}
+
+	var users []Users
+	builder := db.Bun.NewSelect().
+		Table("auth.users").
+		Column("id", "aud", "email", "encrypted_password", "email_confirmed_at", "created_at", "updated_at").
+		Limit(limit)
+
+	for k, v := range filter {
+		if v != "" {
+			builder.Where("auth.users.? = ?", bun.Ident(k), v)
+		}
+	}
+
+	offset := (page - 1) * limit
+	builder.Offset(offset)
+
+	if ascending {
+		builder.OrderExpr("auth.users.? ASC", bun.Ident(sortField))
+	} else {
+		builder.OrderExpr("auth.users.? DESC", bun.Ident(sortField))
+	}
+
+	err := builder.Scan(context.Background(), &users)
+
+	// spew.Dump(users)
+	return users, err
+}
+
+// func RemoveUser(userID string) error {
+// 	_, err := db.Bun.NewDelete().
+// 		Model(&Users{}).
+// 		Where("user_id = ?", userID).
+// 		Exec(context.Background())
+// 	return err
+// }
+
+func RemoveAccount(userID string) error {
+	_, err := db.Bun.NewDelete().
+		Model(&Account{}).
+		Where("user_id = ?", userID).
+		Exec(context.Background())
+	return err
+}
+
+// func GetUserByID(userID string) (*Users, error) {
+// 	user := new(Users)
+// 	err := db.Bun.NewSelect().
+// 		Model(user).
+// 		Where("id = ?", userID).
+// 		Scan(context.Background())
+// 	if err != nil {
+// 		return nil, err
+// 	}
+// 	return user, nil
+// }
+
+func GetAccountByID(userID string) (*Account, error) {
+	account := new(Account)
+	err := db.Bun.NewSelect().
+		Model(account).
+		Where("id = ?", userID).
+		Scan(context.Background())
+	if err != nil {
+		return nil, err
+	}
+	return account, nil
 }

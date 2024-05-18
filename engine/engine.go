@@ -67,5 +67,14 @@ func CreateEngine() *django.Engine {
 	engine.AddFunc("pluralize", func(s string, n int) (res string) {
 		return util.Pluralize(s, n)
 	})
+
+	engine.AddFunc("getEmailForUserID", func(userID string) (res string) {
+		user, err := data.GetUser(userID)
+		if err != nil {
+			return "Can't get a user by ID"
+		}
+		return user.Email
+	})
+
 	return engine
 }

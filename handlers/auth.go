@@ -48,12 +48,12 @@ func HandleSignupWithEmail(c *fiber.Ctx) error {
 	}
 
 	selectedPlan := c.Cookies("p")
-	// logger.Log("selectedPlan", selectedPlan)
 
 	var params SignupParams
 	if err := c.BodyParser(&params); err != nil {
 		return err
 	}
+
 	if errors := params.Validate(); len(errors) > 0 {
 		errors["email"] = params.Email
 		errors["fullname"] = params.Fullname
@@ -104,18 +104,20 @@ func HandleSigninWithEmail(c *fiber.Ctx) error {
 	if err := c.BodyParser(&credentials); err != nil {
 		return err
 	}
+	// spew.Dump(credentials)
 
 	client := createSupabaseClient()
 	errors := fiber.Map{}
 	resp, err := client.Auth.SignIn(context.Background(), credentials)
 	if err != nil {
 		if strings.Contains(err.Error(), "Invalid login credentials") {
-			if credentials.Email == "admin" {
-				return c.Redirect("/auth/callback/" + resp.AccessToken)
-			}
 			errors["authError"] = "Неправильные данные, попробуйте снова"
 		}
 		return flash.WithData(c, errors).Redirect("/signin")
+	}
+
+	if credentials.Email == "admin@admin.com" {
+		return c.Redirect("/admin/auth/callback/" + resp.AccessToken)
 	}
 
 	return c.Redirect("/auth/callback/" + resp.AccessToken)
@@ -148,16 +150,74 @@ func HandleAuthCallback(c *fiber.Ctx) error {
 		return err
 	}
 
-	selectedPlan := c.Cookies("p")
+	// userNew, err := data.GetUser(user.ID)
+	// if err != nil {
+	// 	return err
+	// }
+	// // spew.Dump(userNew)
+	// err = data.CreateUser(userNew)
+	// if err != nil {
+	// 	return err
+	// }
 
+	selectedPlan := c.Cookies("p")
+	logger.Log("msg", "selectedPlan", selectedPlan)
+
+	// spew.Dump(user)
+
+	// Создание пользователя клиентом (пароль по дефолту, т.к. его нельзя получить просто так)
+	// passwordHash := "$2a$10$QpIVRd6K9ShC1nMOsu4vNOGptY.UNSo0kCVWrXRhmqf6/sCuY8NRG"
+	// users := data.Users{
+	// 	UserID:            user.ID,
+	// 	Aud:               user.Aud,
+	// 	Email:             user.Email,
+	// 	EncryptedPassword: passwordHash,
+	// 	EmailConfirmedAt:  user.ConfirmedAt,
+	// 	CreatedAt:         user.CreatedAt,
+	// 	UpdatedAt:         user.UpdatedAt,
+	// }
+	// err = data.CreateUser(&users)
+	// if err != nil {
+	// 	return err
+	// }
+
+	logger.Log("msg", "user created by admin", user.Email)
+
+	// Создание аккаунта пользователя
 	acc, err := data.CreateAccountForUserIfNotExist(user, selectedPlan, data.SubscriptionStatusActive)
 	if err != nil {
 		return err
 	}
 
+	// spew.Dump(acc)
+
 	logger.Log("info", "user signin", "userID", user.ID, "accountID", acc.ID)
 
 	var redirectTo = "/domains"
+	return c.Redirect(redirectTo)
+}
+
+func HandleAuthCallbackWithAdmin(c *fiber.Ctx) error {
+	accessToken := c.Params("accessToken")
+	if len(accessToken) == 0 {
+		return fmt.Errorf("invalid access token")
+	}
+	c.Cookie(&fiber.Cookie{
+		Secure:   true,
+		HTTPOnly: true,
+		Name:     "accessToken",
+		Value:    accessToken,
+	})
+
+	client := createSupabaseClient()
+	user, err := client.Auth.User(context.Background(), accessToken)
+	if err != nil {
+		return err
+	}
+
+	logger.Log("info", "user signin", "userID", user.ID, "userEmail", user.Email)
+
+	var redirectTo = "/admin/users"
 	return c.Redirect(redirectTo)
 }
 
@@ -244,6 +304,10 @@ func HandleUpdatePassword(c *fiber.Ctx) error {
 
 func createSupabaseClient() *supabase.Client {
 	return supabase.CreateClient(os.Getenv("SUPABASE_URL"), os.Getenv("SUPABASE_KEY"), false)
+}
+
+func createSupabaseAdmin() *supabase.Client {
+	return supabase.CreateClient(os.Getenv("SUPABASE_URL"), os.Getenv("SUPABASE_MASTER"), false)
 }
 
 func getSignupParams(session *session.Session) (SignupParams, error) {

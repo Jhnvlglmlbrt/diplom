@@ -182,7 +182,7 @@ func IsConnectionRefused(err error) bool {
 	return strings.Contains(err.Error(), "connect: connection refused")
 }
 
-var loomingTreshold = time.Hour * 24 * 7 * 4 // 2 weeks
+var loomingTreshold = time.Hour * 24 * 7 * 4 // 4 weeks
 
 func getStatus(expires time.Time) string {
 	if expires.Before(time.Now()) {

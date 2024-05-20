@@ -1,4 +1,4 @@
-# diploma monitorin-ssl certificates
+# diploma monitoring-ssl certificates
 
 
 ### to rebuild when we do tailwindcss configuration

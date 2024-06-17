@@ -113,7 +113,7 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     function addFavoriteDomains() {
-        const selectedDomains = document.querySelectorAll('input[name="favorite_domains"]:checked');
+        const selectedDomains = document.querySelectorAll('input[name="domains"]:checked');
         const domainIds = Array.from(selectedDomains).map(dom => dom.value);
 
         if (domainIds.length === 0) {

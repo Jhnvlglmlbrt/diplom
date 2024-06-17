@@ -80,7 +80,7 @@
                                 <th>
                                     <input type="checkbox" class="checkbox checkbox-xs" name="domains" value="{{ tracking.ID }}" />
                                 </th>
-                                <th>{{ getEmailForUserID(tracking.UserID)}}</th>
+                                <th>{{ emailMap[tracking.UserID] }}</th>
                                 <th>{{ tracking.DomainName }}</th>
                                 <td>{{ tracking.Issuer }}</td>
                                 <td>{{ formatTime(tracking.Expires) }}</td>

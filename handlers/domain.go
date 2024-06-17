@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
+	"log"
 	"math"
 	"net/url"
 	"os"
@@ -507,7 +508,6 @@ func HandleAddFavorite(c *fiber.Ctx) error {
 	if err := c.BodyParser(&req); err != nil {
 		return err
 	}
-
 	for _, domainID := range req.DomainIDs {
 		domainID, err := strconv.ParseInt(domainID, 10, 64)
 		if err != nil {
@@ -581,6 +581,7 @@ func HandleCheckDomainStatus(c *fiber.Ctx) error {
 }
 
 func HandleAdminDomainList(c *fiber.Ctx) error {
+	start := time.Now()
 	var (
 		domainTrackings []data.DomainTracking
 		aud             = "authenticated"
@@ -635,7 +636,18 @@ func HandleAdminDomainList(c *fiber.Ctx) error {
 		}
 	}
 
+	var userIDs []string
+	for _, tracking := range domainTrackings {
+		userIDs = append(userIDs, tracking.UserID)
+	}
+
+	emailMap, err := data.GetEmailsForUserIDs(userIDs)
+	if err != nil {
+		return err
+	}
+
 	data := fiber.Map{
+		"emailMap":    emailMap,
 		"users":       users,
 		"trackings":   domainTrackings,
 		"filters":     filterContext,
@@ -643,6 +655,7 @@ func HandleAdminDomainList(c *fiber.Ctx) error {
 		"pages":       buildPages(count, filter.Limit),
 		"queryParams": filter.encode(),
 	}
+	log.Printf("HandleAdminDomainList took %s", time.Since(start))
 	return c.Render("admin/domains", data)
 }
 
